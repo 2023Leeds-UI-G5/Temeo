@@ -24,7 +24,6 @@
 #include <QtCore/QDir>
 #include <QtCore/QDirIterator>
 #include "mainwindow_player.h"
-#include "the_player.h"
 #include "the_button.h"
 #include "ui_mainwindow_player.h"
 
@@ -80,23 +79,26 @@ int main(int argc, char *argv[])
     // create the Qt Application
     QApplication app(argc, argv);
 
-    // // collect all the videos in the folder
-    // std::vector <TheButtonInfo> videos;
+    // collect all the videos in the folder
+    std::vector <TheButtonInfo> videos;
 
-    // if (argc == 2)
-    //     videos = getInfoIn(std::string(argv[1]));
+    if (argc == 2)
+        videos = getInfoIn(std::string(argv[1]));
 
-    // if (videos.size() == 0)
-    // {
+    if (videos.size() == 0)
+    {
 
-    //     const int result = QMessageBox::information(
-    //             NULL,
-    //             QString("Tomeo"),
-    //             QString("no videos found! Add command line argument to \"quoted\" file location."));
-    //     exit(-1);
-    // }
+        const int result = QMessageBox::information(
+                NULL,
+                QString("Tomeo"),
+                QString("no videos found! Add command line argument to \"quoted\" file location."));
+        exit(-1);
+    }
 
     MainWindow_player mainWindow;
+
+    mainWindow.jumpTo(&videos[0]);
+
     mainWindow.show();
     return app.exec();
 }

@@ -29,38 +29,73 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QGroupBox" name="groupBox_playertoolbar">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>139</y>
-      <width>301</width>
-      <height>81</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);</string>
-    </property>
-    <property name="title">
-     <string/>
-    </property>
-   </widget>
-   <widget class="QWidget" name="layoutWidget">
+   <widget class="QVideoWidget" name="widget_video" native="true">
     <property name="geometry">
      <rect>
       <x>20</x>
-      <y>150</y>
+      <y>19</y>
       <width>281</width>
-      <height>61</height>
+      <height>151</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea_videoslist">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>280</y>
+      <width>281</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>279</width>
+       <height>169</height>
+      </rect>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>190</y>
+      <width>281</width>
+      <height>51</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QSlider" name="horizontalSlider_position">
-       <property name="orientation">
-        <enum>Qt::Horizontal</enum>
-       </property>
-      </widget>
+      <layout class="QHBoxLayout" name="horizontalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_position">
+         <property name="text">
+          <string>00:00:00</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="horizontalSlider_position">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_duration">
+         <property name="text">
+          <string>00:00:00</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -157,6 +192,14 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QVideoWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">qvideowidget.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="sec.qrc"/>
  </resources>

@@ -1,8 +1,17 @@
+//
+//
+//
+
 #ifndef MAINWINDOW_PLAYER_H
 #define MAINWINDOW_PLAYER_H
 
 #include <Qstring>
 #include <QMainWindow>
+#include <QMediaPlayer>
+#include <QMediaPlaylist>
+#include <QVideoWidget>
+
+#include "the_button.h"
 
 namespace Ui {
 class MainWindow_player;
@@ -16,6 +25,13 @@ public:
     explicit MainWindow_player(QWidget *parent = nullptr);
     ~MainWindow_player();
 
+    void jumpTo(TheButtonInfo *button);
+
+private:
+    QMediaPlayer *player;
+    QString  durationTime;
+    QString  positionTime;
+
 private slots:
     void on_pushButton_playandpause_toggled(bool checked);
 
@@ -24,6 +40,15 @@ private slots:
     void on_pushButton_screencontrol_toggled(bool checked);
 
     void on_pushButton_playspeed_clicked();
+
+    void onDurationChanged(qint64 duration);
+
+    void onPositionChanged(qint64 position);
+
+    void on_horizontalSlider_volume_valueChanged(int value);
+
+    void on_horizontalSlider_position_valueChanged(int value);
+
 
 private:
     Ui::MainWindow_player *ui;
