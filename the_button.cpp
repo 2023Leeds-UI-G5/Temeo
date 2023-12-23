@@ -5,10 +5,10 @@
 #include "the_button.h"
 
 
-void TheButton::init(TheButtonInfo *i)
+void TheButton::init(const TheButtonInfo *i)
 {
-    setIcon(*(i->icon));
-    info = i;
+    info = const_cast<TheButtonInfo*>(i);
+    setIcon(*(info->icon));
 }
 
 

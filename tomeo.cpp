@@ -97,8 +97,11 @@ int main(int argc, char *argv[])
 
     MainWindow_player mainWindow;
 
-    mainWindow.jumpTo(&videos[0]);
+    mainWindow.videosListInit(videos);
 
     mainWindow.show();
+
+
+
     return app.exec();
 }

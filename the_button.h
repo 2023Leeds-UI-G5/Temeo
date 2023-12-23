@@ -31,14 +31,13 @@ public:
         connect(this, SIGNAL(released()), this, SLOT(clicked())); // if QPushButton clicked...then run clicked() below
     }
 
-    void init(TheButtonInfo *i);
+    void init(const TheButtonInfo *i);
 
-private
-    slots:
-            void clicked();
+public slots:
+    void clicked();
 
-    signals:
-            void jumpTo(TheButtonInfo * );
+signals:
+    void jumpTo(TheButtonInfo *buttonInfo);
 
 };
 

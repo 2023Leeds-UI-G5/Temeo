@@ -25,12 +25,15 @@ public:
     explicit MainWindow_player(QWidget *parent = nullptr);
     ~MainWindow_player();
 
-    void jumpTo(TheButtonInfo *button);
+    void videosListInit(std::vector <TheButtonInfo> v);
+
+    void jumpTo(TheButtonInfo* buttonInfo);
 
 private:
     QMediaPlayer *player;
     QString  durationTime;
     QString  positionTime;
+    std::vector <TheButtonInfo> videos;
 
 private slots:
     void on_pushButton_playandpause_toggled(bool checked);
@@ -48,7 +51,6 @@ private slots:
     void on_horizontalSlider_volume_valueChanged(int value);
 
     void on_horizontalSlider_position_valueChanged(int value);
-
 
 private:
     Ui::MainWindow_player *ui;

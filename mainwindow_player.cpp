@@ -146,8 +146,31 @@ void MainWindow_player::onPositionChanged(qint64 position)
 }
 
 
-void MainWindow_player::jumpTo(TheButtonInfo *button)
+void MainWindow_player::jumpTo(TheButtonInfo* buttonInfo)
 {
-    player->setMedia(*button->url);
+    player->setMedia(*buttonInfo->url);
     player->setVolume(ui->horizontalSlider_volume->value());
+    ui->pushButton_playandpause->setChecked(0);
+}
+
+void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
+{
+    videos = v;
+
+    QWidget *videosListLyout = new QWidget(ui->scrollArea_videoslist);
+    QWidget *buttonWidget = new QWidget();
+
+    // 创建一个垂直布局管理器
+    QVBoxLayout *verticalLayout = new QVBoxLayout(videosListLyout);
+    buttonWidget->setLayout(verticalLayout);
+
+    for (const TheButtonInfo &video : videos) {
+        TheButton *button = new TheButton(buttonWidget);
+        connect(button, &TheButton::jumpTo, this, &MainWindow_player::jumpTo);
+        verticalLayout->addWidget(button);
+        button->init(&video);
+    }
+
+    videosListLyout->setLayout(verticalLayout);
+    ui->scrollArea_videoslist->setWidget(videosListLyout);
 }
