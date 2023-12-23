@@ -9,7 +9,6 @@
 #include <QApplication>
 #include <QMediaPlayer>
 #include "the_button.h"
-#include "the_videotoolbar.h"
 #include <vector>
 #include <QTimer>
 
@@ -21,7 +20,6 @@ class ThePlayer : public QMediaPlayer
 private:
     std::vector <TheButtonInfo> *infos;
     std::vector<TheButton *> *buttons;
-    TheVideoToolBar *videoToolBar;
 
 public:
     ThePlayer();

@@ -23,9 +23,10 @@
 #include <QMessageBox>
 #include <QtCore/QDir>
 #include <QtCore/QDirIterator>
+#include "mainwindow_player.h"
 #include "the_player.h"
 #include "the_button.h"
-#include "the_videotoolbar.h""
+#include "ui_mainwindow_player.h"
 
 // read in videos and thumbnails to this directory
 std::vector <TheButtonInfo> getInfoIn(std::string loc)
@@ -73,76 +74,29 @@ std::vector <TheButtonInfo> getInfoIn(std::string loc)
 int main(int argc, char *argv[])
 {
 
-    // let's just check that Qt is operational first
-    qDebug() << "Qt version: " << QT_VERSION_STR << endl;
+    // // let's just check that Qt is operational first
+    // qDebug() << "Qt version: " << QT_VERSION_STR << endl;
 
     // create the Qt Application
     QApplication app(argc, argv);
 
-    // collect all the videos in the folder
-    std::vector <TheButtonInfo> videos;
+    // // collect all the videos in the folder
+    // std::vector <TheButtonInfo> videos;
 
-    if (argc == 2)
-        videos = getInfoIn(std::string(argv[1]));
+    // if (argc == 2)
+    //     videos = getInfoIn(std::string(argv[1]));
 
-    if (videos.size() == 0)
-    {
+    // if (videos.size() == 0)
+    // {
 
-        const int result = QMessageBox::information(
-                NULL,
-                QString("Tomeo"),
-                QString("no videos found! Add command line argument to \"quoted\" file location."));
-        exit(-1);
-    }
+    //     const int result = QMessageBox::information(
+    //             NULL,
+    //             QString("Tomeo"),
+    //             QString("no videos found! Add command line argument to \"quoted\" file location."));
+    //     exit(-1);
+    // }
 
-    // the widget that will show the video
-    QVideoWidget *videoWidget = new QVideoWidget;
-
-    // the QMediaPlayer which controls the playback
-    ThePlayer *player = new ThePlayer;
-    player->setVideoOutput(videoWidget);
-
-    // the Tool Bar
-    TheVideoToolBar *videoToolBar = new TheVideoToolBar;
-
-    // a row of buttons
-    QWidget *buttonWidget = new QWidget();
-    // a list of the buttons
-    std::vector < TheButton * > buttons;
-    // the buttons are arranged horizontally
-    QHBoxLayout *layout = new QHBoxLayout();
-    buttonWidget->setLayout(layout);
-
-    // list all the videos
-    for (size_t i = 0; i < videos.size(); i++)
-    {
-        TheButton *button = new TheButton(buttonWidget);
-        button->connect(button, SIGNAL(jumpTo(TheButtonInfo * )), player,
-                        SLOT(jumpTo(TheButtonInfo * ))); // when clicked, tell the player to play.
-        buttons.push_back(button);
-        layout->addWidget(button);
-        button->init(&videos.at(i));
-    }
-
-    // tell the player what buttons and videos are available
-    player->setContent(&buttons, &videos);
-    // create the main window and layout
-    QWidget window;
-    QVBoxLayout *top = new QVBoxLayout();
-    window.setLayout(top);
-    window.setWindowTitle("tomeo");
-    window.setMinimumSize(800, 680);
-
-    // add the video and the buttons to the top level widget
-    top->addWidget(videoWidget);
-
-    top->addWidget(videoToolBar, 0, Qt::AlignTop);
-
-    top->addWidget(buttonWidget);
-
-    // showtime!
-    window.show();
-
-    // wait for the app to terminate
+    MainWindow_player mainWindow;
+    mainWindow.show();
     return app.exec();
 }

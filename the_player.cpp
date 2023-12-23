@@ -8,17 +8,6 @@ ThePlayer::ThePlayer() : QMediaPlayer(NULL)
 {
     setVolume(0); // be slightly less annoying
     connect(this, SIGNAL(stateChanged(QMediaPlayer::State)), this, SLOT(playStateChanged(QMediaPlayer::State)));
-
-    // connect bar to player
-    videoToolBar = new TheVideoToolBar;
-    connect(videoToolBar, &TheVideoToolBar::playClicked, this, &ThePlayer::play);
-    connect(videoToolBar, &TheVideoToolBar::pauseClicked, this, &ThePlayer::pause);
-    connect(videoToolBar, &TheVideoToolBar::seek, this, &ThePlayer::setPosition);
-    connect(videoToolBar, &TheVideoToolBar::volumeChanged, this, &ThePlayer::setVolume);
-
-    connect(this, &QMediaPlayer::positionChanged, videoToolBar, &TheVideoToolBar::updatePosition);
-    connect(this, &QMediaPlayer::durationChanged, videoToolBar, &TheVideoToolBar::updateDuration);
-    connect(this, &QMediaPlayer::volumeChanged, videoToolBar, &TheVideoToolBar::updateVolume);
 }
 
 // all buttons have been setup, store pointers here
