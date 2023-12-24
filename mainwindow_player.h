@@ -34,6 +34,7 @@ private:
     QString  durationTime;
     QString  positionTime;
     std::vector <TheButtonInfo> videos;
+    QRect m_rect;
 
 private slots:
     void on_pushButton_playandpause_toggled(bool checked);

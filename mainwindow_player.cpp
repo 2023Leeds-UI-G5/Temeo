@@ -67,11 +67,29 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
 {
     if(checked == 1)
     {
-        showFullScreen();
+        m_rect = ui->widget_player->geometry();
+        ui->widget_player->setWindowFlags(Qt::Window);
+        ui->widget_player->setFocus();
+        ui->widget_player->showFullScreen();
+        // 调整 ui->widget_video 的大小以填充整个 ui->widget_player
+        ui->widget_video->setGeometry(0, 0, ui->widget_player->width(), ui->widget_player->height() - ui->widget_toolbar->height());
+
+        // 调整 ui->widget_toolbar 的大小以填满 ui->widget_player
+        ui->widget_toolbar->setGeometry(0, ui->widget_player->height() - ui->widget_toolbar->height(), ui->widget_player->width(), ui->widget_toolbar->height());
+
     }
     else
     {
-        showNormal();
+        ui->widget_player->setWindowFlags(Qt::SubWindow);
+        ui->widget_player->showNormal();
+
+        ui->widget_player->setGeometry(m_rect);
+
+        // 恢复 ui->widget_video 的大小
+        ui->widget_video->setGeometry(0, 0, m_rect.width(), m_rect.height() - ui->widget_toolbar->height());
+
+        // 恢复 ui->widget_toolbar 的大小和位置
+        ui->widget_toolbar->setGeometry(0, m_rect.height() - ui->widget_toolbar->height(), m_rect.width(), ui->widget_toolbar->height());
     }
 }
 
@@ -125,7 +143,7 @@ void MainWindow_player::onDurationChanged(qint64 duration)
     QString hoursStr = QString::number(hours).rightJustified(2, '0');
 
     durationTime = hoursStr + ":" + minsStr + ":" + secsStr;
-
+    qDebug() << durationTime << endl;
     ui->label_duration->setText(durationTime);
 }
 
