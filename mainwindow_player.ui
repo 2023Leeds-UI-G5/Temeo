@@ -2,18 +2,27 @@
 <ui version="4.0">
  <class>MainWindow_player</class>
  <widget class="QMainWindow" name="MainWindow_player">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>320</width>
-    <height>480</height>
+    <width>1366</width>
+    <height>768</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="minimumSize">
    <size>
-    <width>320</width>
-    <height>480</height>
+    <width>1366</width>
+    <height>768</height>
    </size>
   </property>
   <property name="maximumSize">
@@ -29,76 +38,79 @@
    <string notr="true"/>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QVideoWidget" name="widget_video" native="true">
+   <widget class="QLabel" name="label_videoslist">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>19</y>
-      <width>281</width>
-      <height>151</height>
+      <x>1100</x>
+      <y>30</y>
+      <width>81</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Videos list:</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="widget_additionalfunction" native="true">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>560</y>
+      <width>841</width>
+      <height>161</height>
      </rect>
     </property>
    </widget>
-   <widget class="QScrollArea" name="scrollArea_videoslist">
+   <widget class="QWidget" name="widget_navigation" native="true">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>260</y>
-      <width>281</width>
-      <height>191</height>
+      <x>0</x>
+      <y>0</y>
+      <width>161</width>
+      <height>751</height>
      </rect>
     </property>
-    <property name="widgetResizable">
-     <bool>true</bool>
+    <property name="styleSheet">
+     <string notr="true">background-color: gray;</string>
     </property>
-    <widget class="QWidget" name="scrollAreaWidgetContents_2">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>279</width>
-       <height>189</height>
-      </rect>
-     </property>
-    </widget>
    </widget>
-   <widget class="QWidget" name="">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>190</y>
-      <width>281</width>
-      <height>51</height>
+      <x>210</x>
+      <y>60</y>
+      <width>841</width>
+      <height>481</height>
      </rect>
     </property>
-    <layout class="QVBoxLayout" name="verticalLayout">
+    <layout class="QVBoxLayout" name="verticalLayout_2">
      <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_position">
-         <property name="text">
-          <string>00:00:00</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QSlider" name="horizontalSlider_position">
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_duration">
-         <property name="text">
-          <string>00:00:00</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <widget class="QVideoWidget" name="widget_video" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>183</height>
+        </size>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: lightgray;</string>
+       </property>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
+       <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
        <item>
         <widget class="QPushButton" name="pushButton_playandpause">
          <property name="minimumSize">
@@ -124,6 +136,31 @@
         </widget>
        </item>
        <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_position">
+           <property name="text">
+            <string>00:00:00</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QSlider" name="horizontalSlider_position">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_duration">
+         <property name="text">
+          <string>00:00:00</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton_volume">
          <property name="text">
           <string/>
@@ -140,54 +177,52 @@
        </item>
        <item>
         <widget class="QSlider" name="horizontalSlider_volume">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_playspeed">
-         <property name="minimumSize">
-          <size>
-           <width>41</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>41</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="text">
-          <string>1.0x</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="pushButton_screencontrol">
-         <property name="minimumSize">
-          <size>
-           <width>20</width>
-           <height>23</height>
-          </size>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="icon">
-          <iconset resource="sec.qrc">
-           <normaloff>:/new/icons/src/fullscreen.png</normaloff>
-           <normalon>:/new/icons/src/smallscreen.png</normalon>:/new/icons/src/fullscreen.png</iconset>
-         </property>
-         <property name="checkable">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout"/>
+     </item>
     </layout>
+   </widget>
+   <widget class="QScrollArea" name="scrollArea_videoslist">
+    <property name="geometry">
+     <rect>
+      <x>1100</x>
+      <y>60</y>
+      <width>221</width>
+      <height>661</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="widgetResizable">
+     <bool>true</bool>
+    </property>
+    <widget class="QWidget" name="scrollAreaWidgetContents_2">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>0</y>
+       <width>219</width>
+       <height>659</height>
+      </rect>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
