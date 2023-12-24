@@ -1,7 +1,3 @@
-//
-//
-//
-
 #include "mainwindow_player.h"
 #include "ui_mainwindow_player.h"
 
@@ -11,19 +7,22 @@ MainWindow_player::MainWindow_player(QWidget *parent)
 {
     ui->setupUi(this);
 
+    // Hide the status bar
+    statusBar()->hide();
+
+    // Initialize the media player
     player = new QMediaPlayer(this);
     player->setNotifyInterval(2000);
     player->setVideoOutput(ui->widget_video);
-    // (ui->widget_video)->setMediaPlayer(player);
 
-    connect(player,SIGNAL(stateChanged(QMediaPlayer::State)),
+    // Connect signals and slots for media player events
+    connect(player, SIGNAL(stateChanged(QMediaPlayer::State)),
             this, SLOT(onstateChanged(QMediaPlayer::State)));
 
-    connect(player,SIGNAL(positionChanged(qint64)),
+    connect(player, SIGNAL(positionChanged(qint64)),
             this, SLOT(onPositionChanged(qint64)));
 
-
-    connect(player,SIGNAL(durationChanged(qint64)),
+    connect(player, SIGNAL(durationChanged(qint64)),
             this, SLOT(onDurationChanged(qint64)));
 }
 
@@ -32,84 +31,52 @@ MainWindow_player::~MainWindow_player()
     delete ui;
 }
 
-
 void MainWindow_player::on_pushButton_playandpause_toggled(bool checked)
 {
-    if(checked == 0)
+    if (checked == 0)
     {
-        // pause
+        // Pause
         player->pause();
     }
     else
     {
-        // play
+        // Play
         player->play();
     }
 }
 
 void MainWindow_player::on_pushButton_volume_toggled(bool checked)
 {
-    if(checked == 0)
+    if (checked == 0)
     {
-        // unmute
+        // Unmute
         player->setMuted(false);
     }
-    else if(ui->horizontalSlider_volume->value() != 0)
+    else if (ui->horizontalSlider_volume->value() != 0)
     {
-        // mute
+        // Mute
         player->setMuted(true);
     }
 }
 
-void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
-{
-    if(checked == 1)
-    {
-        showFullScreen();
-    }
-    else
-    {
-        showNormal();
-    }
-}
-
-void MainWindow_player::on_pushButton_playspeed_clicked()
-{
-
-    // speed range: 0.5 - 2.0
-
-    // when click, change button text info
-    QString playSpeedStr = ui->pushButton_playspeed->text();
-    playSpeedStr.chop(1);
-    double playSpeedDouble = playSpeedStr.toDouble();
-
-    playSpeedDouble += 0.25;
-    if(playSpeedDouble > 2.0) playSpeedDouble = 0.5;
-
-    playSpeedStr = QString::number(playSpeedDouble);
-    playSpeedStr += "x";
-
-    ui->pushButton_playspeed->setText(playSpeedStr);
-
-    qreal initialPlaybackRate = playSpeedDouble;
-    player->setPlaybackRate(initialPlaybackRate);
-}
-
 void MainWindow_player::on_horizontalSlider_volume_valueChanged(int value)
 {
+    // Set the volume
     player->setVolume(value);
 }
 
 void MainWindow_player::on_horizontalSlider_position_valueChanged(int value)
 {
+    // Set the media player position
     player->setPosition(value);
 }
 
 void MainWindow_player::onDurationChanged(qint64 duration)
 {
-    // set range
+    // Set the maximum range for position slider
     ui->horizontalSlider_position->setMaximum(duration);
 
+    // Format the duration time
     duration /= 1000;
     int secs = duration % 60;
     int mins = (duration / 60) % 60;
@@ -124,14 +91,15 @@ void MainWindow_player::onDurationChanged(qint64 duration)
     ui->label_duration->setText(durationTime);
 }
 
-
 void MainWindow_player::onPositionChanged(qint64 position)
 {
     if (ui->horizontalSlider_position->isSliderDown())
         return;
 
+    // Update the position slider
     ui->horizontalSlider_position->setSliderPosition(position);
 
+    // Format the position time
     position /= 1000;
     int secs = position % 60;
     int mins = (position / 60) % 60;
@@ -145,9 +113,9 @@ void MainWindow_player::onPositionChanged(qint64 position)
     ui->label_position->setText(positionTime);
 }
 
-
 void MainWindow_player::jumpTo(TheButtonInfo* buttonInfo)
 {
+    // Jump to a specific position in the media
     player->setMedia(*buttonInfo->url);
     player->setVolume(ui->horizontalSlider_volume->value());
     ui->pushButton_playandpause->setChecked(0);
@@ -157,13 +125,15 @@ void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
 {
     videos = v;
 
-    QWidget *videosListLyout = new QWidget(ui->scrollArea_videoslist);
+    // Create widgets for the video list
+    QWidget *videosListLayout = new QWidget(ui->scrollArea_videoslist);
     QWidget *buttonWidget = new QWidget();
 
-    // 创建一个垂直布局管理器
-    QVBoxLayout *verticalLayout = new QVBoxLayout(videosListLyout);
+    // Create a vertical layout manager
+    QVBoxLayout *verticalLayout = new QVBoxLayout(videosListLayout);
     buttonWidget->setLayout(verticalLayout);
 
+    // Populate the list with buttons
     for (const TheButtonInfo &video : videos) {
         TheButton *button = new TheButton(buttonWidget);
         connect(button, &TheButton::jumpTo, this, &MainWindow_player::jumpTo);
@@ -171,6 +141,7 @@ void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
         button->init(&video);
     }
 
-    videosListLyout->setLayout(verticalLayout);
-    ui->scrollArea_videoslist->setWidget(videosListLyout);
+    // Set the layout for the video list
+    videosListLayout->setLayout(verticalLayout);
+    ui->scrollArea_videoslist->setWidget(videosListLayout);
 }

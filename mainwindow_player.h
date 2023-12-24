@@ -40,10 +40,6 @@ private slots:
 
     void on_pushButton_volume_toggled(bool checked);
 
-    void on_pushButton_screencontrol_toggled(bool checked);
-
-    void on_pushButton_playspeed_clicked();
-
     void onDurationChanged(qint64 duration);
 
     void onPositionChanged(qint64 position);
