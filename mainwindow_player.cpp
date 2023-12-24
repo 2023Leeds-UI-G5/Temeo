@@ -260,4 +260,36 @@ void MainWindow_player::keyPressEvent(QKeyEvent *event)
     {
         ui->pushButton_playandpause->setChecked((ui->pushButton_playandpause->isChecked() ^ 1));
     }
+
+    if (event->key() == Qt::Key_Left)
+    {
+        on_pushButton_moveback_clicked();
+    }
+
+    if (event->key() == Qt::Key_Right)
+    {
+        on_pushButton_movefoward_clicked();
+    }
+
+    if (event->key() == Qt::Key_Up)
+    {
+        int tmpVolume = player->volume();
+        tmpVolume += 10;
+
+        if(tmpVolume > 99) tmpVolume = 99;
+
+        player->setVolume(tmpVolume);
+        ui->horizontalSlider_volume->setValue(tmpVolume);
+    }
+
+    if (event->key() == Qt::Key_Down)
+    {
+        int tmpVolume = player->volume();
+        tmpVolume -= 10;
+
+        if(tmpVolume < 0) tmpVolume = 0;
+
+        player->setVolume(tmpVolume);
+        ui->horizontalSlider_volume->setValue(tmpVolume);
+    }
 }
