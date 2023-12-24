@@ -136,6 +136,25 @@
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="pushButton_playspeed">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>40</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>1.0x</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <layout class="QHBoxLayout" name="horizontalLayout_2">
          <item>
           <widget class="QLabel" name="label_position">
@@ -188,6 +207,21 @@
          </property>
         </widget>
        </item>
+       <item>
+        <widget class="QPushButton" name="pushButton_screencontrol">
+         <property name="text">
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset resource="sec.qrc">
+           <normaloff>:/new/icons/src/fullscreen.png</normaloff>
+           <normalon>:/new/icons/src/smallscreen.png</normalon>:/new/icons/src/fullscreen.png</iconset>
+         </property>
+         <property name="checkable">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
       </layout>
      </item>
      <item>
@@ -200,7 +234,7 @@
      <rect>
       <x>1100</x>
       <y>60</y>
-      <width>221</width>
+      <width>241</width>
       <height>661</height>
      </rect>
     </property>
@@ -210,6 +244,12 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
+    <property name="maximumSize">
+     <size>
+      <width>16777215</width>
+      <height>16777215</height>
+     </size>
+    </property>
     <property name="widgetResizable">
      <bool>true</bool>
     </property>
@@ -218,7 +258,7 @@
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>219</width>
+       <width>239</width>
        <height>659</height>
       </rect>
      </property>

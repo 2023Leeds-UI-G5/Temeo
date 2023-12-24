@@ -1,3 +1,7 @@
+//
+//
+//
+
 #include "mainwindow_player.h"
 #include "ui_mainwindow_player.h"
 
@@ -57,6 +61,40 @@ void MainWindow_player::on_pushButton_volume_toggled(bool checked)
         // Mute
         player->setMuted(true);
     }
+}
+
+void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
+{
+    if(checked == 1)
+    {
+        showFullScreen();
+    }
+    else
+    {
+        showNormal();
+    }
+}
+
+void MainWindow_player::on_pushButton_playspeed_clicked()
+{
+
+    // speed range: 0.5 - 2.0
+
+    // when click, change button text info
+    QString playSpeedStr = ui->pushButton_playspeed->text();
+    playSpeedStr.chop(1);
+    double playSpeedDouble = playSpeedStr.toDouble();
+
+    playSpeedDouble += 0.25;
+    if(playSpeedDouble > 2.0) playSpeedDouble = 0.5;
+
+    playSpeedStr = QString::number(playSpeedDouble);
+    playSpeedStr += "x";
+
+    ui->pushButton_playspeed->setText(playSpeedStr);
+
+    qreal initialPlaybackRate = playSpeedDouble;
+    player->setPlaybackRate(initialPlaybackRate);
 }
 
 void MainWindow_player::on_horizontalSlider_volume_valueChanged(int value)

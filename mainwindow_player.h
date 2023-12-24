@@ -44,6 +44,10 @@ private slots:
 
     void onPositionChanged(qint64 position);
 
+    void on_pushButton_screencontrol_toggled(bool checked);
+
+    void on_pushButton_playspeed_clicked();
+
     void on_horizontalSlider_volume_valueChanged(int value);
 
     void on_horizontalSlider_position_valueChanged(int value);
