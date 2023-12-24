@@ -53,6 +53,10 @@ private slots:
 
     void on_horizontalSlider_position_valueChanged(int value);
 
+    void on_pushButton_movefoward_clicked();
+
+    void on_pushButton_moveback_clicked();
+
 private:
     Ui::MainWindow_player *ui;
 };

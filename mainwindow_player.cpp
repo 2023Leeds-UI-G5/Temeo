@@ -201,3 +201,26 @@ void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
     videosListLayout->setLayout(verticalLayout);
     ui->scrollArea_videoslist->setWidget(videosListLayout);
 }
+
+void MainWindow_player::on_pushButton_movefoward_clicked()
+{
+    qint64 currentPosition = player->position();
+    qint64 currentDuration = player->duration();
+
+    currentPosition += 10 * 1000;
+    if(currentPosition > currentDuration) currentPosition = currentDuration;
+
+    player->setPosition(currentPosition);
+}
+
+
+void MainWindow_player::on_pushButton_moveback_clicked()
+{
+    qint64 currentPosition = player->position();
+
+    currentPosition -= 10 * 1000;
+    if(currentPosition < 0) currentPosition = 0;
+
+    player->setPosition(currentPosition);
+}
+

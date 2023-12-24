@@ -39,7 +39,9 @@ public:
     QPushButton *pushButton_playandpause;
     QPushButton *pushButton_playspeed;
     QLabel *label_position;
+    QPushButton *pushButton_moveback;
     QSlider *horizontalSlider_position;
+    QPushButton *pushButton_movefoward;
     QLabel *label_duration;
     QPushButton *pushButton_volume;
     QSlider *horizontalSlider_volume;
@@ -137,11 +139,31 @@ public:
 
         horizontalLayout->addWidget(label_position);
 
+        pushButton_moveback = new QPushButton(widget_toolbar);
+        pushButton_moveback->setObjectName(QString::fromUtf8("pushButton_moveback"));
+        sizePolicy3.setHeightForWidth(pushButton_moveback->sizePolicy().hasHeightForWidth());
+        pushButton_moveback->setSizePolicy(sizePolicy3);
+        QIcon icon1;
+        icon1.addFile(QString::fromUtf8(":/new/icons/src/moveback.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_moveback->setIcon(icon1);
+
+        horizontalLayout->addWidget(pushButton_moveback);
+
         horizontalSlider_position = new QSlider(widget_toolbar);
         horizontalSlider_position->setObjectName(QString::fromUtf8("horizontalSlider_position"));
         horizontalSlider_position->setOrientation(Qt::Horizontal);
 
         horizontalLayout->addWidget(horizontalSlider_position);
+
+        pushButton_movefoward = new QPushButton(widget_toolbar);
+        pushButton_movefoward->setObjectName(QString::fromUtf8("pushButton_movefoward"));
+        sizePolicy3.setHeightForWidth(pushButton_movefoward->sizePolicy().hasHeightForWidth());
+        pushButton_movefoward->setSizePolicy(sizePolicy3);
+        QIcon icon2;
+        icon2.addFile(QString::fromUtf8(":/new/icons/src/movefoward.png"), QSize(), QIcon::Normal, QIcon::Off);
+        pushButton_movefoward->setIcon(icon2);
+
+        horizontalLayout->addWidget(pushButton_movefoward);
 
         label_duration = new QLabel(widget_toolbar);
         label_duration->setObjectName(QString::fromUtf8("label_duration"));
@@ -152,10 +174,10 @@ public:
 
         pushButton_volume = new QPushButton(widget_toolbar);
         pushButton_volume->setObjectName(QString::fromUtf8("pushButton_volume"));
-        QIcon icon1;
-        icon1.addFile(QString::fromUtf8(":/new/icons/src/volume.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon1.addFile(QString::fromUtf8(":/new/icons/src/mutevolume.png"), QSize(), QIcon::Normal, QIcon::On);
-        pushButton_volume->setIcon(icon1);
+        QIcon icon3;
+        icon3.addFile(QString::fromUtf8(":/new/icons/src/volume.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon3.addFile(QString::fromUtf8(":/new/icons/src/mutevolume.png"), QSize(), QIcon::Normal, QIcon::On);
+        pushButton_volume->setIcon(icon3);
         pushButton_volume->setCheckable(true);
 
         horizontalLayout->addWidget(pushButton_volume);
@@ -170,10 +192,10 @@ public:
 
         pushButton_screencontrol = new QPushButton(widget_toolbar);
         pushButton_screencontrol->setObjectName(QString::fromUtf8("pushButton_screencontrol"));
-        QIcon icon2;
-        icon2.addFile(QString::fromUtf8(":/new/icons/src/fullscreen.png"), QSize(), QIcon::Normal, QIcon::Off);
-        icon2.addFile(QString::fromUtf8(":/new/icons/src/smallscreen.png"), QSize(), QIcon::Normal, QIcon::On);
-        pushButton_screencontrol->setIcon(icon2);
+        QIcon icon4;
+        icon4.addFile(QString::fromUtf8(":/new/icons/src/fullscreen.png"), QSize(), QIcon::Normal, QIcon::Off);
+        icon4.addFile(QString::fromUtf8(":/new/icons/src/smallscreen.png"), QSize(), QIcon::Normal, QIcon::On);
+        pushButton_screencontrol->setIcon(icon4);
         pushButton_screencontrol->setCheckable(true);
 
         horizontalLayout->addWidget(pushButton_screencontrol);
@@ -221,6 +243,8 @@ public:
         pushButton_playandpause->setText(QString());
         pushButton_playspeed->setText(QApplication::translate("MainWindow_player", "1.0x", nullptr));
         label_position->setText(QApplication::translate("MainWindow_player", "00:00:00", nullptr));
+        pushButton_moveback->setText(QString());
+        pushButton_movefoward->setText(QString());
         label_duration->setText(QApplication::translate("MainWindow_player", "00:00:00", nullptr));
         pushButton_volume->setText(QString());
         pushButton_screencontrol->setText(QString());

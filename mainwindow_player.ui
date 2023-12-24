@@ -206,9 +206,43 @@
          </widget>
         </item>
         <item>
+         <widget class="QPushButton" name="pushButton_moveback">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="sec.qrc">
+            <normaloff>:/new/icons/src/moveback.png</normaloff>:/new/icons/src/moveback.png</iconset>
+          </property>
+         </widget>
+        </item>
+        <item>
          <widget class="QSlider" name="horizontalSlider_position">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QPushButton" name="pushButton_movefoward">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="icon">
+           <iconset resource="sec.qrc">
+            <normaloff>:/new/icons/src/movefoward.png</normaloff>:/new/icons/src/movefoward.png</iconset>
           </property>
          </widget>
         </item>
