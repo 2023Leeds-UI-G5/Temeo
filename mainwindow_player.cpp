@@ -68,27 +68,26 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
     if(checked == 1)
     {
         m_rect = ui->widget_player->geometry();
-        ui->widget_player->setWindowFlags(Qt::Window);
         ui->widget_player->setFocus();
-        ui->widget_player->showFullScreen();
-        // 调整 ui->widget_video 的大小以填充整个 ui->widget_player
-        ui->widget_video->setGeometry(0, 0, ui->widget_player->width(), ui->widget_player->height() - ui->widget_toolbar->height());
+        showFullScreen();
+        ui->widget_player->setGeometry(0, 0, width(), height());
 
-        // 调整 ui->widget_toolbar 的大小以填满 ui->widget_player
-        ui->widget_toolbar->setGeometry(0, ui->widget_player->height() - ui->widget_toolbar->height(), ui->widget_player->width(), ui->widget_toolbar->height());
+        // Adjust the size of ui->widget_video to fill the entire ui->widget_player
+        ui->widget_video->setGeometry(0, 0, width(), height() - ui->widget_toolbar->height());
 
+        // Adjust the size of ui->widget_toolbar to fill ui->widget_player
+        ui->widget_toolbar->setGeometry(0, height() - ui->widget_toolbar->height(), width(), ui->widget_toolbar->height());
     }
     else
     {
-        ui->widget_player->setWindowFlags(Qt::SubWindow);
-        ui->widget_player->showNormal();
+        showNormal();
 
         ui->widget_player->setGeometry(m_rect);
 
-        // 恢复 ui->widget_video 的大小
+        // Restore the geometry of ui->widget_video
         ui->widget_video->setGeometry(0, 0, m_rect.width(), m_rect.height() - ui->widget_toolbar->height());
 
-        // 恢复 ui->widget_toolbar 的大小和位置
+        // Restore the geometry of ui->widget_toolbar
         ui->widget_toolbar->setGeometry(0, m_rect.height() - ui->widget_toolbar->height(), m_rect.width(), ui->widget_toolbar->height());
     }
 }
@@ -96,9 +95,9 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
 void MainWindow_player::on_pushButton_playspeed_clicked()
 {
 
-    // speed range: 0.5 - 2.0
+    // Speed range: 0.5 - 2.0
 
-    // when click, change button text info
+    // When clicked, change button text info
     QString playSpeedStr = ui->pushButton_playspeed->text();
     playSpeedStr.chop(1);
     double playSpeedDouble = playSpeedStr.toDouble();
@@ -129,7 +128,7 @@ void MainWindow_player::on_horizontalSlider_position_valueChanged(int value)
 
 void MainWindow_player::onDurationChanged(qint64 duration)
 {
-    // Set the maximum range for position slider
+    // Set the maximum range for the position slider
     ui->horizontalSlider_position->setMaximum(duration);
 
     // Format the duration time
@@ -143,7 +142,7 @@ void MainWindow_player::onDurationChanged(qint64 duration)
     QString hoursStr = QString::number(hours).rightJustified(2, '0');
 
     durationTime = hoursStr + ":" + minsStr + ":" + secsStr;
-    qDebug() << durationTime << endl;
+
     ui->label_duration->setText(durationTime);
 }
 
@@ -213,7 +212,6 @@ void MainWindow_player::on_pushButton_movefoward_clicked()
     player->setPosition(currentPosition);
 }
 
-
 void MainWindow_player::on_pushButton_moveback_clicked()
 {
     qint64 currentPosition = player->position();
@@ -224,3 +222,74 @@ void MainWindow_player::on_pushButton_moveback_clicked()
     player->setPosition(currentPosition);
 }
 
+void MainWindow_player::mousePressEvent(QMouseEvent *event)
+{
+    int x = event->x();
+    int y = event->y();
+    QRect widgetRect = ui->widget_player->geometry();
+    widgetRect.setBottom(widgetRect.top() + ui->widget_video->geometry().bottom());
+
+    if (widgetRect.contains(x, y))
+    {
+        ui->pushButton_playandpause->setChecked((ui->pushButton_playandpause->isChecked() ^ 1));
+    }
+}
+
+void MainWindow_player::mouseDoubleClickEvent(QMouseEvent *event)
+{
+    int x = event->x();
+    int y = event->y();
+    QRect widgetRect = ui->widget_player->geometry();
+    widgetRect.setBottom(widgetRect.top() + ui->widget_video->geometry().bottom());
+
+    if (widgetRect.contains(x, y))
+    {
+        ui->pushButton_screencontrol->setChecked((ui->pushButton_screencontrol->isChecked() ^ 1));
+    }
+}
+
+void MainWindow_player::keyPressEvent(QKeyEvent *event)
+{
+    if (event->key() == Qt::Key_Escape)
+    {
+        if (ui->pushButton_screencontrol->isChecked())
+            ui->pushButton_screencontrol->setChecked(0);
+    }
+
+    if (event->key() == Qt::Key_Space)
+    {
+        ui->pushButton_playandpause->setChecked((ui->pushButton_playandpause->isChecked() ^ 1));
+    }
+
+    if (event->key() == Qt::Key_Left)
+    {
+        on_pushButton_moveback_clicked();
+    }
+
+    if (event->key() == Qt::Key_Right)
+    {
+        on_pushButton_movefoward_clicked();
+    }
+
+    if (event->key() == Qt::Key_Up)
+    {
+        int tmpVolume = player->volume();
+        tmpVolume += 10;
+
+        if(tmpVolume > 99) tmpVolume = 99;
+
+        player->setVolume(tmpVolume);
+        ui->horizontalSlider_volume->setValue(tmpVolume);
+    }
+
+    if (event->key() == Qt::Key_Down)
+    {
+        int tmpVolume = player->volume();
+        tmpVolume -= 10;
+
+        if(tmpVolume < 0) tmpVolume = 0;
+
+        player->setVolume(tmpVolume);
+        ui->horizontalSlider_volume->setValue(tmpVolume);
+    }
+}

@@ -10,6 +10,7 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QVideoWidget>
+#include <QMouseEvent>
 
 #include "the_button.h"
 
@@ -28,6 +29,13 @@ public:
     void videosListInit(std::vector <TheButtonInfo> v);
 
     void jumpTo(TheButtonInfo* buttonInfo);
+
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
+
+    void mouseDoubleClickEvent(QMouseEvent *event) override;
+
+    void keyPressEvent(QKeyEvent *event) override;
 
 private:
     QMediaPlayer *player;
