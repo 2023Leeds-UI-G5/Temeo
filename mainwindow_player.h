@@ -10,6 +10,7 @@
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
 #include <QVideoWidget>
+#include <QMouseEvent>
 
 #include "the_button.h"
 
@@ -29,11 +30,19 @@ public:
 
     void jumpTo(TheButtonInfo* buttonInfo);
 
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
+
+    void mouseDoubleClickEvent(QMouseEvent *event) override;
+
+    void keyPressEvent(QKeyEvent *event) override;
+
 private:
     QMediaPlayer *player;
     QString  durationTime;
     QString  positionTime;
     std::vector <TheButtonInfo> videos;
+    QRect m_rect;
 
 private slots:
     void on_pushButton_playandpause_toggled(bool checked);
@@ -44,9 +53,17 @@ private slots:
 
     void onPositionChanged(qint64 position);
 
+    void on_pushButton_screencontrol_toggled(bool checked);
+
+    void on_pushButton_playspeed_clicked();
+
     void on_horizontalSlider_volume_valueChanged(int value);
 
     void on_horizontalSlider_position_valueChanged(int value);
+
+    void on_pushButton_movefoward_clicked();
+
+    void on_pushButton_moveback_clicked();
 
 private:
     Ui::MainWindow_player *ui;
