@@ -27,3 +27,8 @@ FORMS += \
 RESOURCES += \
     sec.qrc
 
+DISTFILES += \
+    Makefile \
+    Makefile.Debug \
+    Makefile.Release
+

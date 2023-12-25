@@ -11,6 +11,11 @@
 #include <QMediaPlaylist>
 #include <QVideoWidget>
 #include <QMouseEvent>
+#include <QFileDialog>
+#include <QDateTime>
+#include <QDir>
+#include <QImageWriter>
+#include <QScreen>
 
 #include "the_button.h"
 
@@ -30,6 +35,8 @@ public:
 
     void jumpTo(TheButtonInfo* buttonInfo);
 
+    void saveImage(QPixmap pixmap);
+
 protected:
     void mousePressEvent(QMouseEvent *event) override;
 
@@ -43,6 +50,7 @@ private:
     QString  positionTime;
     std::vector <TheButtonInfo> videos, tmpVideos;
     QRect m_rect;
+    QWidget picWindow;
 
 private slots:
     void on_pushButton_playandpause_toggled(bool checked);
