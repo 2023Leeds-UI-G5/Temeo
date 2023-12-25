@@ -9,5 +9,15 @@
         <file>src/mutevolume.png</file>
         <file>src/moveback.png</file>
         <file>src/movefoward.png</file>
+        <file>src/account.png</file>
+        <file>src/languageChinese.png</file>
+        <file>src/languageEnglish.png</file>
+        <file>src/like.png</file>
+        <file>src/liked.png</file>
+        <file>src/screenshot.png</file>
+        <file>src/search.png</file>
+        <file>src/share.png</file>
+        <file>src/collect.png</file>
+        <file>src/collected.png</file>
     </qresource>
 </RCC>
