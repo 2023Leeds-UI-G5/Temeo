@@ -181,6 +181,7 @@ void MainWindow_player::jumpTo(TheButtonInfo* buttonInfo)
     ui->pushButton_playandpause->setChecked(0);
     player->play();
     player->pause();
+    ui->label_videoname->setText(buttonInfo->url->fileName());
 }
 
 void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
@@ -342,7 +343,6 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
         ui->pushButton_sendcomment->setText("发送");
 
         ui->label_comment->setText("评论: ");
-        ui->label_videotittle->setText("视频标题: ");
         ui->label_videoslist->setText("视频列表: ");
 
         ui->textEdit_search->setPlaceholderText("输入视频标题...");
@@ -358,11 +358,16 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
         ui->pushButton_sendcomment->setText("POST");
 
         ui->label_comment->setText("Comments:");
-        ui->label_videotittle->setText("Video Tittle:");
         ui->label_videoslist->setText("Video List:");
 
         ui->textEdit_search->setPlaceholderText("type to search...");
         ui->textEdit_comment->setPlaceholderText("type the comment...");
     }
+}
+
+
+void MainWindow_player::on_pushButton_screenshot_clicked()
+{
+    //QVideoFrame &frame = player->;
 }
 

@@ -75,7 +75,6 @@ public:
     QPushButton *pushButton_search;
     QTextEdit *textEdit_search;
     QWidget *widget_tittle;
-    QLabel *label_videotittle;
     QLabel *label_videoname;
     QFrame *line_2;
     QStatusBar *statusbar;
@@ -408,21 +407,15 @@ public:
         widget_tittle = new QWidget(centralwidget);
         widget_tittle->setObjectName(QString::fromUtf8("widget_tittle"));
         widget_tittle->setGeometry(QRect(210, 30, 841, 71));
-        label_videotittle = new QLabel(widget_tittle);
-        label_videotittle->setObjectName(QString::fromUtf8("label_videotittle"));
-        label_videotittle->setGeometry(QRect(0, 0, 151, 41));
-        sizePolicy2.setHeightForWidth(label_videotittle->sizePolicy().hasHeightForWidth());
-        label_videotittle->setSizePolicy(sizePolicy2);
-        QFont font3;
-        font3.setPointSize(16);
-        label_videotittle->setFont(font3);
         label_videoname = new QLabel(widget_tittle);
         label_videoname->setObjectName(QString::fromUtf8("label_videoname"));
-        label_videoname->setGeometry(QRect(0, 30, 841, 41));
-        label_videoname->setFont(font1);
+        label_videoname->setGeometry(QRect(0, 10, 841, 41));
+        QFont font3;
+        font3.setPointSize(20);
+        label_videoname->setFont(font3);
         line_2 = new QFrame(widget_tittle);
         line_2->setObjectName(QString::fromUtf8("line_2"));
-        line_2->setGeometry(QRect(0, 30, 131, 16));
+        line_2->setGeometry(QRect(0, 50, 841, 16));
         line_2->setFrameShape(QFrame::HLine);
         line_2->setFrameShadow(QFrame::Sunken);
         MainWindow_player->setCentralWidget(centralwidget);
@@ -470,8 +463,7 @@ public:
         label_videoslist->setText(QApplication::translate("MainWindow_player", "Videos list:", nullptr));
         pushButton_search->setText(QString());
         textEdit_search->setPlaceholderText(QApplication::translate("MainWindow_player", "type to search...", nullptr));
-        label_videotittle->setText(QApplication::translate("MainWindow_player", "Video Tittle:", nullptr));
-        label_videoname->setText(QApplication::translate("MainWindow_player", "a.wmv", nullptr));
+        label_videoname->setText(QString());
     } // retranslateUi
 
 };

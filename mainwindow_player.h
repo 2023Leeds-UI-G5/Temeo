@@ -71,6 +71,8 @@ private slots:
 
     void on_pushButton_language_toggled(bool checked);
 
+    void on_pushButton_screenshot_clicked();
+
 private:
     Ui::MainWindow_player *ui;
 };
