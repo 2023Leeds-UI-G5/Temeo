@@ -65,6 +65,10 @@ private slots:
 
     void on_pushButton_moveback_clicked();
 
+    void on_pushButton_sendcomment_clicked();
+
+    void on_pushButton_search_clicked();
+
 private:
     Ui::MainWindow_player *ui;
 };

@@ -174,6 +174,8 @@ void MainWindow_player::jumpTo(TheButtonInfo* buttonInfo)
     player->setMedia(*buttonInfo->url);
     player->setVolume(ui->horizontalSlider_volume->value());
     ui->pushButton_playandpause->setChecked(0);
+    player->play();
+    player->pause();
 }
 
 void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
@@ -293,3 +295,15 @@ void MainWindow_player::keyPressEvent(QKeyEvent *event)
         ui->horizontalSlider_volume->setValue(tmpVolume);
     }
 }
+
+void MainWindow_player::on_pushButton_sendcomment_clicked()
+{
+    ui->textEdit_comment->setText("");
+}
+
+
+void MainWindow_player::on_pushButton_search_clicked()
+{
+    ui->textEdit_search->setText("");
+}
+
