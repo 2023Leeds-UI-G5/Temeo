@@ -7,5 +7,7 @@
         <file>src/fullscreen.png</file>
         <file>src/smallscreen.png</file>
         <file>src/mutevolume.png</file>
+        <file>src/moveback.png</file>
+        <file>src/movefoward.png</file>
     </qresource>
 </RCC>
