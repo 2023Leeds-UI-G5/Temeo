@@ -19,10 +19,15 @@ MainWindow_player::MainWindow_player(QWidget *parent)
     player->setNotifyInterval(2000);
     player->setVideoOutput(ui->widget_video);
 
-    // Connect signals and slots for media player events
-    connect(player, SIGNAL(stateChanged(QMediaPlayer::State)),
-            this, SLOT(onstateChanged(QMediaPlayer::State)));
+    // check the language
+    QLocale currentLocale = QLocale::system();
+    QString language = currentLocale.languageToString(currentLocale.language());
+    if(language == "Chinese")
+    {
+        ui->pushButton_language->setChecked(1);
+    }
 
+    // Connect signals and slots for media player events
     connect(player, SIGNAL(positionChanged(qint64)),
             this, SLOT(onPositionChanged(qint64)));
 
@@ -180,7 +185,9 @@ void MainWindow_player::jumpTo(TheButtonInfo* buttonInfo)
 
 void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
 {
-    videos = v;
+    tmpVideos = v;
+    if(videos.empty())
+        videos = v;
 
     // Create widgets for the video list
     QWidget *videosListLayout = new QWidget(ui->scrollArea_videoslist);
@@ -191,7 +198,7 @@ void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
     buttonWidget->setLayout(verticalLayout);
 
     // Populate the list with buttons
-    for (const TheButtonInfo &video : videos) {
+    for (const TheButtonInfo &video : tmpVideos) {
         TheButton *button = new TheButton(buttonWidget);
         connect(button, &TheButton::jumpTo, this, &MainWindow_player::jumpTo);
         verticalLayout->addWidget(button);
@@ -304,6 +311,58 @@ void MainWindow_player::on_pushButton_sendcomment_clicked()
 
 void MainWindow_player::on_pushButton_search_clicked()
 {
+    QString searchContent = ui->textEdit_search->toPlainText();
     ui->textEdit_search->setText("");
+    std::vector <TheButtonInfo> filteredVideos;
+
+    for(auto video:videos)
+    {
+        QUrl *tmpUrl = video.url;
+        QString fileName = tmpUrl->fileName();
+
+        if(fileName.contains(searchContent))
+        {
+            filteredVideos.push_back(video);
+        }
+    }
+
+    videosListInit(filteredVideos);
+}
+
+
+void MainWindow_player::on_pushButton_language_toggled(bool checked)
+{
+    if (checked)
+    {
+        ui->pushButton_account->setText("账户");
+        ui->pushButton_likelist->setText("喜爱列表");
+        ui->pushButton_collection->setText("收藏夹");
+        ui->pushButton_screenshotlibrary->setText("截图库");
+        ui->pushButton_language->setText("切换语言");
+        ui->pushButton_sendcomment->setText("发送");
+
+        ui->label_comment->setText("评论: ");
+        ui->label_videotittle->setText("视频标题: ");
+        ui->label_videoslist->setText("视频列表: ");
+
+        ui->textEdit_search->setPlaceholderText("输入视频标题...");
+        ui->textEdit_comment->setPlaceholderText("输入内容...");
+    }
+    else
+    {
+        ui->pushButton_account->setText("Account");
+        ui->pushButton_likelist->setText("Like List");
+        ui->pushButton_collection->setText("Collection");
+        ui->pushButton_screenshotlibrary->setText("Screenshot Library");
+        ui->pushButton_language->setText("Change Language");
+        ui->pushButton_sendcomment->setText("POST");
+
+        ui->label_comment->setText("Comments:");
+        ui->label_videotittle->setText("Video Tittle:");
+        ui->label_videoslist->setText("Video List:");
+
+        ui->textEdit_search->setPlaceholderText("type to search...");
+        ui->textEdit_comment->setPlaceholderText("type the comment...");
+    }
 }
 

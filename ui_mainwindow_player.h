@@ -102,6 +102,7 @@ public:
         pushButton_like = new QPushButton(widget_additionalfunction);
         pushButton_like->setObjectName(QString::fromUtf8("pushButton_like"));
         pushButton_like->setGeometry(QRect(10, 10, 32, 26));
+        pushButton_like->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon;
         icon.addFile(QString::fromUtf8(":/new/icons/src/like.png"), QSize(), QIcon::Normal, QIcon::Off);
         icon.addFile(QString::fromUtf8(":/new/icons/src/liked.png"), QSize(), QIcon::Normal, QIcon::On);
@@ -111,6 +112,7 @@ public:
         pushButton_share = new QPushButton(widget_additionalfunction);
         pushButton_share->setObjectName(QString::fromUtf8("pushButton_share"));
         pushButton_share->setGeometry(QRect(110, 10, 32, 26));
+        pushButton_share->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon1;
         icon1.addFile(QString::fromUtf8(":/new/icons/src/share.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_share->setIcon(icon1);
@@ -118,6 +120,7 @@ public:
         pushButton_screenshot = new QPushButton(widget_additionalfunction);
         pushButton_screenshot->setObjectName(QString::fromUtf8("pushButton_screenshot"));
         pushButton_screenshot->setGeometry(QRect(790, 10, 32, 26));
+        pushButton_screenshot->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon2;
         icon2.addFile(QString::fromUtf8(":/new/icons/src/screenshot.png"), QSize(), QIcon::Normal, QIcon::Off);
         pushButton_screenshot->setIcon(icon2);
@@ -128,6 +131,7 @@ public:
         QFont font;
         font.setPointSize(15);
         pushButton_sendcomment->setFont(font);
+        pushButton_sendcomment->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_sendcomment->setStyleSheet(QString::fromUtf8(""));
         pushButton_sendcomment->setIconSize(QSize(16, 16));
         line = new QFrame(widget_additionalfunction);
@@ -153,6 +157,7 @@ public:
         pushButton_collect = new QPushButton(widget_additionalfunction);
         pushButton_collect->setObjectName(QString::fromUtf8("pushButton_collect"));
         pushButton_collect->setGeometry(QRect(60, 10, 32, 26));
+        pushButton_collect->setCursor(QCursor(Qt::PointingHandCursor));
         QIcon icon4;
         icon4.addFile(QString::fromUtf8(":/new/icons/src/collect.png"), QSize(), QIcon::Normal, QIcon::Off);
         icon4.addFile(QString::fromUtf8(":/new/icons/src/collected.png"), QSize(), QIcon::Normal, QIcon::On);
@@ -162,6 +167,7 @@ public:
         textEdit_comment = new QTextEdit(widget_additionalfunction);
         textEdit_comment->setObjectName(QString::fromUtf8("textEdit_comment"));
         textEdit_comment->setGeometry(QRect(110, 90, 541, 51));
+        textEdit_comment->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
         widget_navigation = new QWidget(centralwidget);
         widget_navigation->setObjectName(QString::fromUtf8("widget_navigation"));
         widget_navigation->setGeometry(QRect(-10, 0, 161, 751));
@@ -185,6 +191,7 @@ public:
         QFont font1;
         font1.setPointSize(18);
         pushButton_logo->setFont(font1);
+        pushButton_logo->setCursor(QCursor(Qt::PointingHandCursor));
         label_logoname = new QLabel(widget_navigation);
         label_logoname->setObjectName(QString::fromUtf8("label_logoname"));
         label_logoname->setGeometry(QRect(60, 20, 53, 21));
@@ -195,6 +202,7 @@ public:
         pushButton_account = new QPushButton(widget_navigation);
         pushButton_account->setObjectName(QString::fromUtf8("pushButton_account"));
         pushButton_account->setGeometry(QRect(70, 80, 71, 23));
+        pushButton_account->setCursor(QCursor(Qt::PointingHandCursor));
         line_4 = new QFrame(widget_navigation);
         line_4->setObjectName(QString::fromUtf8("line_4"));
         line_4->setGeometry(QRect(10, 670, 151, 16));
@@ -209,6 +217,7 @@ public:
         pushButton_likelist = new QPushButton(widget_navigation);
         pushButton_likelist->setObjectName(QString::fromUtf8("pushButton_likelist"));
         pushButton_likelist->setGeometry(QRect(20, 130, 131, 23));
+        pushButton_likelist->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_likelist->setStyleSheet(QString::fromUtf8("text-align:left;"));
         QIcon icon6;
         icon6.addFile(QString::fromUtf8(":/new/icons/src/like.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -216,6 +225,7 @@ public:
         pushButton_collection = new QPushButton(widget_navigation);
         pushButton_collection->setObjectName(QString::fromUtf8("pushButton_collection"));
         pushButton_collection->setGeometry(QRect(20, 170, 131, 23));
+        pushButton_collection->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_collection->setStyleSheet(QString::fromUtf8("text-align:left;"));
         QIcon icon7;
         icon7.addFile(QString::fromUtf8(":/new/icons/src/collect.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -223,6 +233,7 @@ public:
         pushButton_screenshotlibrary = new QPushButton(widget_navigation);
         pushButton_screenshotlibrary->setObjectName(QString::fromUtf8("pushButton_screenshotlibrary"));
         pushButton_screenshotlibrary->setGeometry(QRect(20, 210, 131, 23));
+        pushButton_screenshotlibrary->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_screenshotlibrary->setStyleSheet(QString::fromUtf8("text-align:left;"));
         pushButton_screenshotlibrary->setIcon(icon2);
         widget_player = new QWidget(centralwidget);
@@ -385,6 +396,7 @@ public:
         pushButton_search = new QPushButton(widget_searchbox);
         pushButton_search->setObjectName(QString::fromUtf8("pushButton_search"));
         pushButton_search->setGeometry(QRect(200, 0, 31, 31));
+        pushButton_search->setCursor(QCursor(Qt::PointingHandCursor));
         pushButton_search->setStyleSheet(QString::fromUtf8(""));
         QIcon icon13;
         icon13.addFile(QString::fromUtf8(":/new/icons/src/search.png"), QSize(), QIcon::Normal, QIcon::Off);
@@ -392,6 +404,7 @@ public:
         textEdit_search = new QTextEdit(widget_searchbox);
         textEdit_search->setObjectName(QString::fromUtf8("textEdit_search"));
         textEdit_search->setGeometry(QRect(10, 0, 181, 31));
+        textEdit_search->viewport()->setProperty("cursor", QVariant(QCursor(Qt::IBeamCursor)));
         widget_tittle = new QWidget(centralwidget);
         widget_tittle->setObjectName(QString::fromUtf8("widget_tittle"));
         widget_tittle->setGeometry(QRect(210, 30, 841, 71));

@@ -41,7 +41,7 @@ private:
     QMediaPlayer *player;
     QString  durationTime;
     QString  positionTime;
-    std::vector <TheButtonInfo> videos;
+    std::vector <TheButtonInfo> videos, tmpVideos;
     QRect m_rect;
 
 private slots:
@@ -68,6 +68,8 @@ private slots:
     void on_pushButton_sendcomment_clicked();
 
     void on_pushButton_search_clicked();
+
+    void on_pushButton_language_toggled(bool checked);
 
 private:
     Ui::MainWindow_player *ui;
