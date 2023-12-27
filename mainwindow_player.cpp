@@ -92,11 +92,7 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
     } else {
         showNormal();
 
-        ui->widget_navigation->setVisible(1);
-        ui->widget_videoslist->setVisible(1);
-        ui->widget_videoname->setVisible(1);
-        ui->widget_functionbar->setVisible(1);
-        ui->widget_additionalfunction->setVisible(1);
+
 
         ui->widget_player->setGeometry(m_rect);
 
@@ -111,8 +107,14 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
                                         m_rect.height() - ui->widget_toolbar->height(),
                                         m_rect.width(),
                                         ui->widget_toolbar->height());
+
+        ui->widget_navigation->setVisible(1);
+        ui->widget_videoslist->setVisible(1);
+        ui->widget_videoname->setVisible(1);
+        ui->widget_functionbar->setVisible(1);
+        ui->widget_additionalfunction->setVisible(1);
     }
-    if(positionTime == durationTime)
+    if(positionTime == durationTime && player->isVideoAvailable())
     {
         player->setMedia(*nowInfo->url);
         player->setPosition(player->duration());
