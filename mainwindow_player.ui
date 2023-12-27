@@ -63,8 +63,7 @@ background-color: rgb(255, 255, 255);</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>-1</pointsize>
-       <fontweight>DemiBold</fontweight>
+       <bold>false</bold>
       </font>
      </property>
      <property name="cursor">
@@ -74,8 +73,8 @@ background-color: rgb(255, 255, 255);</string>
       <string notr="true">color: rgb(255, 255, 255);
 
 background-color: rgb(55, 125, 255);
-font-weight:600;
-font-size:16px</string>
+
+</string>
      </property>
      <property name="text">
       <string>Post</string>
@@ -150,17 +149,16 @@ padding-top:2px;</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>-1</pointsize>
-       <bold>true</bold>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(28, 63, 170);
 color: rgb(255, 255, 255);
-font-size:25px;
+
 border-bottom-right-radius:0px;
 border-bottom-left-radius:0px;
-font-weight:700;</string>
+</string>
      </property>
      <property name="lineWidth">
       <number>1</number>
@@ -189,7 +187,7 @@ font-weight:700;</string>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(0, 85, 255);
-font: 22pt &quot;Mistral&quot;;
+
 
 </string>
      </property>
@@ -221,7 +219,7 @@ font: 22pt &quot;Mistral&quot;;
      </property>
      <property name="styleSheet">
       <string notr="true">color:white;
-font: 600 9pt &quot;Yu Gothic UI Semibold&quot;;
+
 background-color: rgb(0, 85, 255);
 border-radius:10px
 </string>
@@ -230,9 +228,9 @@ border-radius:10px
       <string>Change Language</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/userlmn_cdd0880bc13ce3695381c0cfd12147c8.png</normaloff>
-       <normalon>src/userlmn_53281e7eb797d755c8df2bd1c7f16340.png</normalon>src/userlmn_cdd0880bc13ce3695381c0cfd12147c8.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/english_white.png</normaloff>
+       <normalon>:/new/icons/src/chinese_white.png</normalon>:/new/icons/src/english_white.png</iconset>
      </property>
      <property name="checkable">
       <bool>true</bool>
@@ -287,14 +285,18 @@ border-radius:10px</string>
        <height>23</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
 border-radius:10px;
-font-weight:800;
-font-size:17px
+
 </string>
      </property>
      <property name="text">
@@ -305,7 +307,7 @@ font-size:17px
      <property name="geometry">
       <rect>
        <x>0</x>
-       <y>620</y>
+       <y>580</y>
        <width>181</width>
        <height>20</height>
       </rect>
@@ -330,13 +332,13 @@ font-size:17px
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/mine_我的.png</normaloff>src/mine_我的.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/account_white.png</normaloff>:/new/icons/src/account_white.png</iconset>
      </property>
      <property name="iconSize">
       <size>
-       <width>36</width>
-       <height>36</height>
+       <width>40</width>
+       <height>40</height>
       </size>
      </property>
     </widget>
@@ -349,6 +351,11 @@ font-size:17px
        <height>20</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="cursor">
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
@@ -356,16 +363,15 @@ font-size:17px
       <string notr="true">text-align:left;
 color:white;
 border-radius:10px;
-font-size:16px;
-font-weight:500;
+
 text-align:center;</string>
      </property>
      <property name="text">
       <string>Like List</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/userlmn_e1e7ac054e37e95eff57eb4051a2cab2.png</normaloff>src/userlmn_e1e7ac054e37e95eff57eb4051a2cab2.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/like_white.png</normaloff>:/new/icons/src/like_white.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_collection">
@@ -384,16 +390,15 @@ text-align:center;</string>
       <string notr="true">text-align:left;
 color:white;
 border-radius:10px;
-font-size:16px;
-font-weight:500;
+
 text-align:center;</string>
      </property>
      <property name="text">
       <string>Collection</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/userlmn_6d6eb0a97316eae95cb5872e3d1c7454.png</normaloff>src/userlmn_6d6eb0a97316eae95cb5872e3d1c7454.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/collect_white.png</normaloff>:/new/icons/src/collect_white.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_screenshotlibrary">
@@ -410,19 +415,19 @@ text-align:center;</string>
      </property>
      <property name="styleSheet">
       <string notr="true">text-align:left;
-font-size:16px;
+
 
 color:white;
 border-radius:10px;
-font-weight:500;
+
 text-align:center;</string>
      </property>
      <property name="text">
       <string>Library</string>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/userlmn_278961458b697c458f364e56c206c7c7.png</normaloff>src/userlmn_278961458b697c458f364e56c206c7c7.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/screenshot_white.png</normaloff>:/new/icons/src/screenshot_white.png</iconset>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_mode">
@@ -434,9 +439,17 @@ text-align:center;</string>
        <height>31</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Yu Gothic UI Semibold</family>
+       <pointsize>9</pointsize>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">color:white;
-font: 600 9pt &quot;Yu Gothic UI Semibold&quot;;
+
 background-color: rgb(0, 85, 255);
 border-radius:10px
 </string>
@@ -459,6 +472,26 @@ border-radius:10px
      </property>
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_upload_file">
+     <property name="geometry">
+      <rect>
+       <x>10</x>
+       <y>610</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color:white;
+
+background-color: rgb(0, 85, 255);
+border-radius:10px
+</string>
+     </property>
+     <property name="text">
+      <string>upload_file</string>
      </property>
     </widget>
    </widget>
@@ -486,7 +519,7 @@ border-radius:10px
        <x>0</x>
        <y>0</y>
        <width>841</width>
-       <height>431</height>
+       <height>401</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -522,16 +555,14 @@ border-top-right-radius:10px;</string>
       </property>
       <property name="font">
        <font>
-        <pointsize>-1</pointsize>
         <italic>false</italic>
-        <fontweight>DemiBold</fontweight>
+        <bold>false</bold>
        </font>
       </property>
       <property name="styleSheet">
        <string notr="true">color: rgb(255, 255, 255);
 background-color: rgba(136, 136, 136, 30);
-font-size:20px;
-font: 600 &quot;Yu Gothic UI Semibold&quot;;
+
 padding-left:15px;</string>
       </property>
       <property name="text">
@@ -798,9 +829,9 @@ padding-right:2px;</string>
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/like gray.png</normaloff>
-       <normalon>:/new/icons/src/liked.png</normalon>src/like gray.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/like_gray.png</normaloff>
+       <normalon>:/new/icons/src/liked.png</normalon>:/new/icons/src/like_gray.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -810,6 +841,9 @@ padding-right:2px;</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_collect">
@@ -828,9 +862,9 @@ padding-right:2px;</string>
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/collect gray.png</normaloff>
-       <normalon>:/new/icons/src/collected.png</normalon>src/collect gray.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/collect_gray.png</normaloff>
+       <normalon>:/new/icons/src/collected.png</normalon>:/new/icons/src/collect_gray.png</iconset>
      </property>
      <property name="iconSize">
       <size>
@@ -840,6 +874,9 @@ padding-right:2px;</string>
      </property>
      <property name="checkable">
       <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_share">
@@ -858,14 +895,21 @@ padding-right:2px;</string>
       <string/>
      </property>
      <property name="icon">
-      <iconset>
-       <normaloff>src/share gray.png</normaloff>src/share gray.png</iconset>
+      <iconset resource="sec.qrc">
+       <normaloff>:/new/icons/src/share_gray.png</normaloff>
+       <normalon>:/new/icons/src/share_gray.png</normalon>:/new/icons/src/share_gray.png</iconset>
      </property>
      <property name="iconSize">
       <size>
        <width>20</width>
        <height>20</height>
       </size>
+     </property>
+     <property name="checkable">
+      <bool>true</bool>
+     </property>
+     <property name="checked">
+      <bool>false</bool>
      </property>
     </widget>
     <widget class="Line" name="line_6">
@@ -931,14 +975,12 @@ border-radius:10px</string>
      </property>
      <property name="font">
       <font>
-       <pointsize>-1</pointsize>
-       <bold>true</bold>
+       <bold>false</bold>
       </font>
      </property>
      <property name="styleSheet">
       <string notr="true">color:white;
-font-size:20px;
-font-weight:700;</string>
+</string>
      </property>
      <property name="text">
       <string>Grab You Like!</string>
@@ -1055,7 +1097,7 @@ border-radius: 10px;</string>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(0, 85, 255);
-font: 22pt &quot;Mistral&quot;;
+
 
 </string>
      </property>

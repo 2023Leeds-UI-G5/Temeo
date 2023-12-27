@@ -342,6 +342,12 @@ void MainWindow_player::on_pushButton_search_clicked()
 // Slot for toggling between Chinese and English language
 void MainWindow_player::on_pushButton_language_toggled(bool checked)
 {
+    QIcon english(":/new/icons/src/english_white.png");
+    QIcon chinese(":/new/icons/src/chinese_white.png");
+    QIcon user(":/new/icons/src/account_white.png");
+    QIcon like(":/new/icons/src/like_white.png");
+    QIcon collect(":/new/icons/src/collect_white.png");
+    QIcon lib(":/new/icons/src/screenshot_white.png");
     if (checked) {
         ui->pushButton_account->setText("账户");
         ui->pushButton_likelist->setText("喜爱列表");
@@ -349,11 +355,16 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
         ui->pushButton_screenshotlibrary->setText("截图库");
         ui->pushButton_language->setText("切换语言");
         ui->pushButton_sendcomment->setText("发送");
-
+        ui->pushButton_language->setIcon(english);
         ui->label_videoslist->setText("视频列表: ");
 
         ui->textEdit_search->setPlaceholderText("输入视频标题...");
         ui->textEdit_comment->setPlaceholderText("输入内容...");
+
+        ui->pushButton_selficon->setIcon(user);
+        ui->pushButton_likelist->setIcon(like);
+        ui->pushButton_collection->setIcon(collect);
+        ui->pushButton_screenshotlibrary->setIcon(lib);
     } else {
         ui->pushButton_account->setText("Account");
         ui->pushButton_likelist->setText("Like List");
@@ -363,9 +374,14 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
         ui->pushButton_sendcomment->setText("POST");
 
         ui->label_videoslist->setText("Video List:");
-
+        ui->pushButton_language->setIcon(chinese);
         ui->textEdit_search->setPlaceholderText("type to search...");
         ui->textEdit_comment->setPlaceholderText("type the comment...");
+
+        ui->pushButton_selficon->setIcon(user);
+        ui->pushButton_likelist->setIcon(like);
+        ui->pushButton_collection->setIcon(collect);
+        ui->pushButton_screenshotlibrary->setIcon(lib);
     }
 }
 
@@ -497,4 +513,40 @@ void MainWindow_player::on_pushButton_mode_toggled(bool checked)
     }
 }
 
+
+
+void MainWindow_player::on_pushButton_like_toggled(bool checked)
+{
+    QIcon like(":/new/icons/src/like_gray.png");
+    QIcon cancel_like(":/new/icons/src/liked.png");
+    if(checked){
+        ui->pushButton_like->setIcon(like);
+    }else{
+        ui->pushButton_like->setIcon(cancel_like);
+    }
+}
+
+
+void MainWindow_player::on_pushButton_collect_toggled(bool checked)
+{
+    QIcon collected(":/new/icons/src/collect_gray.png");
+    QIcon cancel_collected(":/new/icons/src/collected.png");
+    if(checked){
+        ui->pushButton_collect->setIcon(collected);
+    }else{
+        ui->pushButton_collect->setIcon(cancel_collected);
+    }
+}
+
+
+void MainWindow_player::on_pushButton_share_toggled(bool checked)
+{
+    QIcon shared(":/new/icons/src/share_gray.png");
+    QIcon cancel_shared(":/new/icons/src/share_gray.png");
+    if(checked){
+        ui->pushButton_share->setIcon(shared);
+    }else{
+        ui->pushButton_share->setIcon(cancel_shared);
+    }
+}
 

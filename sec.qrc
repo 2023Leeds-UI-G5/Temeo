@@ -19,5 +19,24 @@
         <file>src/share.png</file>
         <file>src/collect.png</file>
         <file>src/collected.png</file>
+        <file>src/account_white.png</file>
+        <file>src/chinese_white.png</file>
+        <file>src/collect_gray.png</file>
+        <file>src/collect_white.png</file>
+        <file>src/english_white.png</file>
+        <file>src/fullscree_white.png</file>
+        <file>src/like_gray.png</file>
+        <file>src/like_white.png</file>
+        <file>src/moveback_white.png</file>
+        <file>src/moveforward_white.png</file>
+        <file>src/mute_white.png</file>
+        <file>src/pause_white.png</file>
+        <file>src/play_white.png</file>
+        <file>src/reload_white.png</file>
+        <file>src/screenshot_white.png</file>
+        <file>src/share_gray.png</file>
+        <file>src/share_whit.png</file>
+        <file>src/smallscreen_white.png</file>
+        <file>src/volume_white.png</file>
     </qresource>
 </RCC>
