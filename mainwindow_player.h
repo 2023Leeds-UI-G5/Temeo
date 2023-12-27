@@ -5,17 +5,20 @@
 #ifndef MAINWINDOW_PLAYER_H
 #define MAINWINDOW_PLAYER_H
 
-#include <Qstring>
+#include <QDateTime>
+#include <QDesktopServices>
+#include <QDirIterator>
+#include <QImageReader>
+#include <QDir>
+#include <QFileDialog>
+#include <QImageWriter>
 #include <QMainWindow>
 #include <QMediaPlayer>
 #include <QMediaPlaylist>
-#include <QVideoWidget>
 #include <QMouseEvent>
-#include <QFileDialog>
-#include <QDateTime>
-#include <QDir>
-#include <QImageWriter>
 #include <QScreen>
+#include <QVideoWidget>
+#include <QPropertyAnimation>
 
 #include "the_button.h"
 
@@ -31,11 +34,13 @@ public:
     explicit MainWindow_player(QWidget *parent = nullptr);
     ~MainWindow_player();
 
-    void videosListInit(std::vector <TheButtonInfo> v);
+    void videosListInit(std::vector<TheButtonInfo> v);
 
-    void jumpTo(TheButtonInfo* buttonInfo);
+    void jumpTo(TheButtonInfo *buttonInfo);
 
     void saveImage(QPixmap pixmap);
+
+    std::vector<TheButtonInfo> getInfoIn(std::string loc);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -46,9 +51,10 @@ protected:
 
 private:
     QMediaPlayer *player;
-    QString  durationTime;
-    QString  positionTime;
-    std::vector <TheButtonInfo> videos, tmpVideos;
+    TheButtonInfo *nowInfo;
+    QString durationTime;
+    QString positionTime;
+    std::vector<TheButtonInfo> videos, tmpVideos;
     QRect m_rect;
     QWidget picWindow;
 
@@ -80,6 +86,10 @@ private slots:
     void on_pushButton_language_toggled(bool checked);
 
     void on_pushButton_screenshot_clicked();
+
+    void on_pushButton_mode_toggled(bool checked);
+
+    void on_pushButton_uploadfile_clicked();
 
 private:
     Ui::MainWindow_player *ui;
