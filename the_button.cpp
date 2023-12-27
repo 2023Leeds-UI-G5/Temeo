@@ -4,13 +4,13 @@
 
 #include "the_button.h"
 
-
-void TheButton::init(TheButtonInfo* i) {
-    setIcon( *(i->icon) );
-    info =  i;
+void TheButton::init(const TheButtonInfo *i)
+{
+    info = const_cast<TheButtonInfo *>(i);
+    setIcon(*(info->icon));
 }
 
-
-void TheButton::clicked() {
+void TheButton::clicked()
+{
     emit jumpTo(info);
 }

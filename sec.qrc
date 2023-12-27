@@ -1,0 +1,42 @@
+<RCC>
+    <qresource prefix="/new/icons">
+        <file>src/pause.png</file>
+        <file>src/play.png</file>
+        <file>src/reload.png</file>
+        <file>src/volume.png</file>
+        <file>src/fullscreen.png</file>
+        <file>src/smallscreen.png</file>
+        <file>src/mutevolume.png</file>
+        <file>src/moveback.png</file>
+        <file>src/movefoward.png</file>
+        <file>src/account.png</file>
+        <file>src/languageChinese.png</file>
+        <file>src/languageEnglish.png</file>
+        <file>src/like.png</file>
+        <file>src/liked.png</file>
+        <file>src/screenshot.png</file>
+        <file>src/search.png</file>
+        <file>src/share.png</file>
+        <file>src/collect.png</file>
+        <file>src/collected.png</file>
+        <file>src/account_white.png</file>
+        <file>src/chinese_white.png</file>
+        <file>src/collect_gray.png</file>
+        <file>src/collect_white.png</file>
+        <file>src/english_white.png</file>
+        <file>src/fullscree_white.png</file>
+        <file>src/like_gray.png</file>
+        <file>src/like_white.png</file>
+        <file>src/moveback_white.png</file>
+        <file>src/moveforward_white.png</file>
+        <file>src/mute_white.png</file>
+        <file>src/pause_white.png</file>
+        <file>src/play_white.png</file>
+        <file>src/reload_white.png</file>
+        <file>src/screenshot_white.png</file>
+        <file>src/share_gray.png</file>
+        <file>src/share_whit.png</file>
+        <file>src/smallscreen_white.png</file>
+        <file>src/volume_white.png</file>
+    </qresource>
+</RCC>
