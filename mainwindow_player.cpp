@@ -70,7 +70,15 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
     if (checked == 1) {
         m_rect = ui->widget_player->geometry();
         ui->widget_player->setFocus();
+
+        ui->widget_navigation->setVisible(0);
+        ui->widget_videoslist->setVisible(0);
+        ui->widget_videoname->setVisible(0);
+        ui->widget_functionbar->setVisible(0);
+        ui->widget_additionalfunction->setVisible(0);
+
         showFullScreen();
+
         ui->widget_player->setGeometry(0, 0, width(), height());
 
         // Adjust the size of ui->widget_video to fill the entire ui->widget_player
@@ -83,6 +91,12 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
                                         ui->widget_toolbar->height());
     } else {
         showNormal();
+
+        ui->widget_navigation->setVisible(1);
+        ui->widget_videoslist->setVisible(1);
+        ui->widget_videoname->setVisible(1);
+        ui->widget_functionbar->setVisible(1);
+        ui->widget_additionalfunction->setVisible(1);
 
         ui->widget_player->setGeometry(m_rect);
 
@@ -98,6 +112,14 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
                                         m_rect.width(),
                                         ui->widget_toolbar->height());
     }
+    if(positionTime == durationTime)
+    {
+        player->setMedia(*nowInfo->url);
+        player->setPosition(player->duration());
+        player->play();
+        player->pause();
+    }
+
 }
 
 // Slot for Play Speed button click
@@ -185,6 +207,7 @@ void MainWindow_player::onPositionChanged(qint64 position)
 void MainWindow_player::jumpTo(TheButtonInfo *buttonInfo)
 {
     // Jump to a specific position in the media
+    nowInfo = buttonInfo;
     player->setMedia(*buttonInfo->url);
     player->setVolume(ui->horizontalSlider_volume->value());
     ui->pushButton_playandpause->setChecked(0);
@@ -349,9 +372,6 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
     QFont chineseFont11("幼圆", 12);
     QFont chineseFont14("幼圆", 16);
 
-    QFont englishSlogan("Mistral", 22);
-    QFont chineseSlogan("方正舒体", 24);
-
     if (checked) {
         // size 14
         ui->pushButton_account->setText("账户");
@@ -515,7 +535,6 @@ void MainWindow_player::on_pushButton_mode_toggled(bool checked)
         // widget_additionalfunction
         ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(245, 245, 224);");
         ui->label_comment->setStyleSheet("background-color: rgb(28, 63, 170);\ncolor: rgb(255, 255, 255);\npadding-right: 7px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
-        ui->label_logoname_3->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\n\n\n");
         ui->pushButton_sendcomment->setStyleSheet("QPushButton {\ncolor: rgb(255, 255, 255);\nbackground-color: rgb(55, 125, 255);\n}\n\nQPushButton:hover {\nbackground-color: rgba(55, 125, 255, 0.7\n);\n}\n");
         ui->textEdit_comment->setStyleSheet("color: rgb(45, 45, 45);\nbackground-color: rgba(255, 255, 255, 0.5);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
 
@@ -553,7 +572,6 @@ void MainWindow_player::on_pushButton_mode_toggled(bool checked)
         // widget_additionalfunction
         ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(44, 44, 44);");
         ui->label_comment->setStyleSheet("background-color: rgb(0, 53, 77);\ncolor: rgb(185, 185, 92);\npadding-right: 7px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
-        ui->label_logoname_3->setStyleSheet("color: rgb(185, 185, 92);\nbackground-color: rgb(0, 85, 127);\n\n\n");
         ui->pushButton_sendcomment->setStyleSheet("QPushButton {\ncolor: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 127);\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 127, 0.7);\n}\n");
         ui->textEdit_comment->setStyleSheet("color: rgb(227, 227, 227);\nbackground-color: rgb(68, 68, 68);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
 

@@ -51,6 +51,7 @@ protected:
 
 private:
     QMediaPlayer *player;
+    TheButtonInfo *nowInfo;
     QString durationTime;
     QString positionTime;
     std::vector<TheButtonInfo> videos, tmpVideos;
