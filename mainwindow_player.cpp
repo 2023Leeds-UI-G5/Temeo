@@ -23,17 +23,14 @@ MainWindow_player::MainWindow_player(QWidget *parent)
     // Check the language
     QLocale currentLocale = QLocale::system();
     QString language = currentLocale.languageToString(currentLocale.language());
-    if (language == "Chinese")
-    {
+    if (language == "Chinese") {
         ui->pushButton_language->setChecked(1);
     }
 
     // Connect signals and slots for media player events
-    connect(player, SIGNAL(positionChanged(qint64)),
-            this, SLOT(onPositionChanged(qint64)));
+    connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(onPositionChanged(qint64)));
 
-    connect(player, SIGNAL(durationChanged(qint64)),
-            this, SLOT(onDurationChanged(qint64)));
+    connect(player, SIGNAL(durationChanged(qint64)), this, SLOT(onDurationChanged(qint64)));
 }
 
 // Destructor
@@ -45,13 +42,10 @@ MainWindow_player::~MainWindow_player()
 // Slot for Play/Pause button toggle
 void MainWindow_player::on_pushButton_playandpause_toggled(bool checked)
 {
-    if (checked == 0)
-    {
+    if (checked == 0) {
         // Pause
         player->pause();
-    }
-    else
-    {
+    } else {
         // Play
         player->play();
     }
@@ -60,13 +54,10 @@ void MainWindow_player::on_pushButton_playandpause_toggled(bool checked)
 // Slot for Mute/Unmute button toggle
 void MainWindow_player::on_pushButton_volume_toggled(bool checked)
 {
-    if (checked == 0)
-    {
+    if (checked == 0) {
         // Unmute
         player->setMuted(false);
-    }
-    else if (ui->horizontalSlider_volume->value() != 0)
-    {
+    } else if (ui->horizontalSlider_volume->value() != 0) {
         // Mute
         player->setMuted(true);
     }
@@ -75,8 +66,7 @@ void MainWindow_player::on_pushButton_volume_toggled(bool checked)
 // Slot for Full Screen toggle
 void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
 {
-    if(checked == 1)
-    {
+    if (checked == 1) {
         m_rect = ui->widget_player->geometry();
         ui->widget_player->setFocus();
         showFullScreen();
@@ -86,19 +76,26 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
         ui->widget_video->setGeometry(0, 0, width(), height() - ui->widget_toolbar->height());
 
         // Adjust the size of ui->widget_toolbar to fill ui->widget_player
-        ui->widget_toolbar->setGeometry(0, height() - ui->widget_toolbar->height(), width(), ui->widget_toolbar->height());
-    }
-    else
-    {
+        ui->widget_toolbar->setGeometry(0,
+                                        height() - ui->widget_toolbar->height(),
+                                        width(),
+                                        ui->widget_toolbar->height());
+    } else {
         showNormal();
 
         ui->widget_player->setGeometry(m_rect);
 
         // Restore the geometry of ui->widget_video
-        ui->widget_video->setGeometry(0, 0, m_rect.width(), m_rect.height() - ui->widget_toolbar->height());
+        ui->widget_video->setGeometry(0,
+                                      0,
+                                      m_rect.width(),
+                                      m_rect.height() - ui->widget_toolbar->height());
 
         // Restore the geometry of ui->widget_toolbar
-        ui->widget_toolbar->setGeometry(0, m_rect.height() - ui->widget_toolbar->height(), m_rect.width(), ui->widget_toolbar->height());
+        ui->widget_toolbar->setGeometry(0,
+                                        m_rect.height() - ui->widget_toolbar->height(),
+                                        m_rect.width(),
+                                        ui->widget_toolbar->height());
     }
 }
 
@@ -113,7 +110,8 @@ void MainWindow_player::on_pushButton_playspeed_clicked()
     double playSpeedDouble = playSpeedStr.toDouble();
 
     playSpeedDouble += 0.25;
-    if(playSpeedDouble > 2.0) playSpeedDouble = 0.5;
+    if (playSpeedDouble > 2.0)
+        playSpeedDouble = 0.5;
 
     playSpeedStr = QString::number(playSpeedDouble);
     playSpeedStr += "x";
@@ -183,7 +181,7 @@ void MainWindow_player::onPositionChanged(qint64 position)
 }
 
 // Slot for Jumping to a specific media position
-void MainWindow_player::jumpTo(TheButtonInfo* buttonInfo)
+void MainWindow_player::jumpTo(TheButtonInfo *buttonInfo)
 {
     // Jump to a specific position in the media
     player->setMedia(*buttonInfo->url);
@@ -195,10 +193,10 @@ void MainWindow_player::jumpTo(TheButtonInfo* buttonInfo)
 }
 
 // Function to initialize the video list
-void MainWindow_player::videosListInit(std::vector <TheButtonInfo> v)
+void MainWindow_player::videosListInit(std::vector<TheButtonInfo> v)
 {
     tmpVideos = v;
-    if(videos.empty())
+    if (videos.empty())
         videos = v;
 
     // Create widgets for the video list
@@ -229,7 +227,8 @@ void MainWindow_player::on_pushButton_movefoward_clicked()
     qint64 currentDuration = player->duration();
 
     currentPosition += 10 * 1000;
-    if(currentPosition > currentDuration) currentPosition = currentDuration;
+    if (currentPosition > currentDuration)
+        currentPosition = currentDuration;
 
     player->setPosition(currentPosition);
 }
@@ -240,7 +239,8 @@ void MainWindow_player::on_pushButton_moveback_clicked()
     qint64 currentPosition = player->position();
 
     currentPosition -= 10 * 1000;
-    if(currentPosition < 0) currentPosition = 0;
+    if (currentPosition < 0)
+        currentPosition = 0;
 
     player->setPosition(currentPosition);
 }
@@ -253,8 +253,7 @@ void MainWindow_player::mousePressEvent(QMouseEvent *event)
     QRect widgetRect = ui->widget_player->geometry();
     widgetRect.setBottom(widgetRect.top() + ui->widget_video->geometry().bottom());
 
-    if (widgetRect.contains(x, y))
-    {
+    if (widgetRect.contains(x, y)) {
         ui->pushButton_playandpause->setChecked((ui->pushButton_playandpause->isChecked() ^ 1));
     }
 }
@@ -267,8 +266,7 @@ void MainWindow_player::mouseDoubleClickEvent(QMouseEvent *event)
     QRect widgetRect = ui->widget_player->geometry();
     widgetRect.setBottom(widgetRect.top() + ui->widget_video->geometry().bottom());
 
-    if (widgetRect.contains(x, y))
-    {
+    if (widgetRect.contains(x, y)) {
         ui->pushButton_screencontrol->setChecked((ui->pushButton_screencontrol->isChecked() ^ 1));
     }
 }
@@ -276,44 +274,40 @@ void MainWindow_player::mouseDoubleClickEvent(QMouseEvent *event)
 // Key press event for handling various shortcuts
 void MainWindow_player::keyPressEvent(QKeyEvent *event)
 {
-    if (event->key() == Qt::Key_Escape)
-    {
+    if (event->key() == Qt::Key_Escape) {
         if (ui->pushButton_screencontrol->isChecked())
             ui->pushButton_screencontrol->setChecked(0);
     }
 
-    if (event->key() == Qt::Key_Space)
-    {
+    if (event->key() == Qt::Key_Space) {
         ui->pushButton_playandpause->setChecked((ui->pushButton_playandpause->isChecked() ^ 1));
     }
 
-    if (event->key() == Qt::Key_Left)
-    {
+    if (event->key() == Qt::Key_Left) {
         on_pushButton_moveback_clicked();
     }
 
-    if (event->key() == Qt::Key_Right)
-    {
+    if (event->key() == Qt::Key_Right) {
         on_pushButton_movefoward_clicked();
     }
 
-    if (event->key() == Qt::Key_Up)
-    {
+    if (event->key() == Qt::Key_Up) {
         int tmpVolume = player->volume();
         tmpVolume += 10;
 
-        if(tmpVolume > 99) tmpVolume = 99;
+        if (tmpVolume > 99)
+            tmpVolume = 99;
 
         player->setVolume(tmpVolume);
         ui->horizontalSlider_volume->setValue(tmpVolume);
     }
 
-    if (event->key() == Qt::Key_Down)
-    {
+    if (event->key() == Qt::Key_Down) {
         int tmpVolume = player->volume();
         tmpVolume -= 10;
 
-        if(tmpVolume < 0) tmpVolume = 0;
+        if (tmpVolume < 0)
+            tmpVolume = 0;
 
         player->setVolume(tmpVolume);
         ui->horizontalSlider_volume->setValue(tmpVolume);
@@ -331,15 +325,13 @@ void MainWindow_player::on_pushButton_search_clicked()
 {
     QString searchContent = ui->textEdit_search->toPlainText();
     ui->textEdit_search->setText("");
-    std::vector <TheButtonInfo> filteredVideos;
+    std::vector<TheButtonInfo> filteredVideos;
 
-    for(auto video:videos)
-    {
+    for (auto video : videos) {
         QUrl *tmpUrl = video.url;
         QString fileName = tmpUrl->fileName();
 
-        if(fileName.contains(searchContent))
-        {
+        if (fileName.contains(searchContent)) {
             filteredVideos.push_back(video);
         }
     }
@@ -350,8 +342,7 @@ void MainWindow_player::on_pushButton_search_clicked()
 // Slot for toggling between Chinese and English language
 void MainWindow_player::on_pushButton_language_toggled(bool checked)
 {
-    if (checked)
-    {
+    if (checked) {
         ui->pushButton_account->setText("账户");
         ui->pushButton_likelist->setText("喜爱列表");
         ui->pushButton_collection->setText("收藏夹");
@@ -363,9 +354,7 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
 
         ui->textEdit_search->setPlaceholderText("输入视频标题...");
         ui->textEdit_comment->setPlaceholderText("输入内容...");
-    }
-    else
-    {
+    } else {
         ui->pushButton_account->setText("Account");
         ui->pushButton_likelist->setText("Like List");
         ui->pushButton_collection->setText("Collection");
@@ -384,17 +373,17 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
 void MainWindow_player::on_pushButton_screenshot_clicked()
 {
     // Take a screenshot of the player's position from the full screen
-    QLayout* tmpLayout = picWindow.layout();
+    QLayout *tmpLayout = picWindow.layout();
 
     if (tmpLayout) {
         // Delete the layout and all its internal widgets
-        QLayoutItem* item;
+        QLayoutItem *item;
         while ((item = tmpLayout->takeAt(0)) != nullptr) {
-            QWidget* widget = item->widget();
+            QWidget *widget = item->widget();
             if (widget) {
                 delete widget;
             } else {
-                QLayout* childLayout = item->layout();
+                QLayout *childLayout = item->layout();
                 if (childLayout) {
                     delete childLayout;
                 } else {
@@ -412,7 +401,10 @@ void MainWindow_player::on_pushButton_screenshot_clicked()
     QRect windowGeometry = this->geometry();
     m_rect = ui->widget_player->geometry();
 
-    windowGeometry.setRect(windowGeometry.x() + m_rect.x(), windowGeometry.y() + m_rect.y(), m_rect.width(), m_rect.height() - ui->widget_toolbar->height());
+    windowGeometry.setRect(windowGeometry.x() + m_rect.x(),
+                           windowGeometry.y() + m_rect.y(),
+                           m_rect.width(),
+                           m_rect.height() - ui->widget_toolbar->height());
 
     QRect cropRect(windowGeometry);
     QPixmap pixmap = screen->grabWindow(0);
@@ -433,9 +425,7 @@ void MainWindow_player::on_pushButton_screenshot_clicked()
 
     picWindow.setLayout(layout);
 
-    connect(pushButton_save, &QPushButton::clicked, [=]() {
-        saveImage(pixmap);
-    });
+    connect(pushButton_save, &QPushButton::clicked, [=]() { saveImage(pixmap); });
 
     picWindow.show();
 }
@@ -446,7 +436,10 @@ void MainWindow_player::saveImage(QPixmap pixmap)
 
     QString fileName = "image-" + dateTime + ".png";
 
-    QString filePath = QFileDialog::getSaveFileName(nullptr, "Save Image", fileName, "Images (*.png *.bmp *.jpg)");
+    QString filePath = QFileDialog::getSaveFileName(nullptr,
+                                                    "Save Image",
+                                                    fileName,
+                                                    "Images (*.png *.bmp *.jpg)");
 
     if (!filePath.isEmpty()) {
         QString directory = QFileInfo(filePath).dir().path() + "/image";
@@ -458,3 +451,50 @@ void MainWindow_player::saveImage(QPixmap pixmap)
         writer.write(pixmap.toImage());
     }
 }
+
+
+
+
+
+
+void MainWindow_player::on_pushButton_mode_toggled(bool checked)
+{   //blue
+    if(checked){
+        ui->pushButton_mode->setText("Dark mode");
+        ui->label_logoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt \"Mistral\";\nborder-radius:10px");
+        ui->widget_navigation->setStyleSheet("background-color: rgb(28, 63, 170);");
+        ui->pushButton_mode->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
+        ui->pushButton_language->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
+        ui->label_logoname_3->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt \"Mistral\";\n\n");
+        ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(255, 255, 255);");
+        ui->textEdit_comment->setStyleSheet("color: rgb(45, 45, 45);\nbackground-color: rgb(247, 247, 247);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
+        ui->label_comment->setStyleSheet("background-color: rgb(28, 63, 170);\ncolor: rgb(255, 255, 255);\nfont-size:25px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\nfont-weight:700;");
+        ui->label_logoname_4->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt \"Mistral\";\n\n");
+        ui->widget_videoslist->setStyleSheet("background-color: rgb(28, 63, 170);\nborder-radius:10px");
+        this->setStyleSheet("background-color: rgb(238, 238, 238);\n");
+        ui->widget_player->setStyleSheet("border-radius:10px;");
+        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(55, 125, 255);\nfont-weight:600;\nfont-size:16px");
+        ui->widget_searchbox->setStyleSheet("background-color: white; \nborder-radius: 10px;");
+
+    }
+    //black
+    else{
+        ui->pushButton_mode->setText("Light mode");
+        ui->label_logoname->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(40, 40, 40);\nfont: 22pt \"Mistral\";\nborder-radius:10px");
+        ui->widget_navigation->setStyleSheet("background-color: rgb(25, 25, 25);");
+        ui->pushButton_mode->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
+        ui->pushButton_language->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
+        ui->label_logoname_3->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(50, 50, 50);\nfont: 22pt \"Mistral\";\n\n");
+        ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(25, 25, 25);");
+        ui->textEdit_comment->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
+        ui->label_comment->setStyleSheet("background-color: rgb(40, 40, 40);\ncolor: rgb(255, 179, 1);\nfont-size:25px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\nfont-weight:700;");
+        ui->label_logoname_4->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(50, 50, 50);\nfont: 22pt \"Mistral\";\n\n");
+        ui->widget_videoslist->setStyleSheet("background-color: rgb(27, 27, 27);\nborder-radius:10px");
+        this->setStyleSheet("background-color: rgb(50, 50, 50);\n");
+        ui->widget_player->setStyleSheet("border-radius:10px;\nbackground-color: rgb(40, 40, 40);");
+        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(40, 40, 40);\nfont-weight:600;\nfont-size:16px");
+        ui->widget_searchbox->setStyleSheet("background-color: white; \nborder-radius: 10px;\nbackground-color: rgb(50, 50, 50);\ncolor: rgb(255, 255, 255);");
+    }
+}
+
+
