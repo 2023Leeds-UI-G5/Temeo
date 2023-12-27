@@ -342,46 +342,72 @@ void MainWindow_player::on_pushButton_search_clicked()
 // Slot for toggling between Chinese and English language
 void MainWindow_player::on_pushButton_language_toggled(bool checked)
 {
-    QIcon english(":/new/icons/src/english_white.png");
-    QIcon chinese(":/new/icons/src/chinese_white.png");
-    QIcon user(":/new/icons/src/account_white.png");
-    QIcon like(":/new/icons/src/like_white.png");
-    QIcon collect(":/new/icons/src/collect_white.png");
-    QIcon lib(":/new/icons/src/screenshot_white.png");
+
+    QFont englishFont11("Yu Gothic UI Semibold", 11);
+    QFont englishFont14("Mistral", 14);
+    QFont chineseFont11("宋体", 11);
+    QFont chineseFont14("宋体", 14);
+
+    QFont englishSlogan("Mistral", 15);
+    QFont chineseSlogan("Times New Roman", 11);
+
     if (checked) {
+        // size 14
         ui->pushButton_account->setText("账户");
+        ui->label_comment->setText("写下你所想！");
+        ui->pushButton_sendcomment->setText("发送");
+        ui->pushButton_account->setFont(chineseFont14);
+        ui->label_comment->setFont(chineseFont14);
+        ui->pushButton_sendcomment->setFont(chineseFont14);
+
+        // size 11
         ui->pushButton_likelist->setText("喜爱列表");
         ui->pushButton_collection->setText("收藏夹");
         ui->pushButton_screenshotlibrary->setText("截图库");
         ui->pushButton_language->setText("切换语言");
-        ui->pushButton_sendcomment->setText("发送");
-        ui->pushButton_language->setIcon(english);
-        ui->label_videoslist->setText("视频列表: ");
+        ui->pushButton_mode->setText(ui->pushButton_mode->isChecked() ? "夜间模式" : "日间模式");
+        ui->pushButton_likelist->setFont(chineseFont11);
+        ui->pushButton_collection->setFont(chineseFont11);
+        ui->pushButton_screenshotlibrary->setFont(chineseFont11);
+        ui->pushButton_language->setFont(chineseFont11);
+        ui->pushButton_mode->setFont(chineseFont11);
 
+        // 标语/Slogan
+        ui->label_videoslist->setText("你所热爱的！");
+        ui->label_videoslist->setFont(chineseSlogan);
+
+        // no font size
         ui->textEdit_search->setPlaceholderText("输入视频标题...");
         ui->textEdit_comment->setPlaceholderText("输入内容...");
 
-        ui->pushButton_selficon->setIcon(user);
-        ui->pushButton_likelist->setIcon(like);
-        ui->pushButton_collection->setIcon(collect);
-        ui->pushButton_screenshotlibrary->setIcon(lib);
     } else {
+        // size 14
         ui->pushButton_account->setText("Account");
+        ui->label_comment->setText("Write down your opinion!");
+        ui->pushButton_sendcomment->setText("POST");
+        ui->pushButton_account->setFont(englishFont14);
+        ui->label_comment->setFont(englishFont14);
+        ui->pushButton_sendcomment->setFont(englishFont14);
+
+        // size 11
         ui->pushButton_likelist->setText("Like List");
         ui->pushButton_collection->setText("Collection");
         ui->pushButton_screenshotlibrary->setText("Screenshot Library");
         ui->pushButton_language->setText("Change Language");
-        ui->pushButton_sendcomment->setText("POST");
+        ui->pushButton_mode->setText(ui->pushButton_mode->isChecked() ? "Dark Modal" : "Light Modal");
+        ui->pushButton_likelist->setFont(englishFont11);
+        ui->pushButton_collection->setFont(englishFont11);
+        ui->pushButton_screenshotlibrary->setFont(englishFont11);
+        ui->pushButton_language->setFont(englishFont11);
+        ui->pushButton_mode->setFont(chineseFont11);
 
-        ui->label_videoslist->setText("Video List:");
-        ui->pushButton_language->setIcon(chinese);
+        // 标语/Slogan
+        ui->label_videoslist->setText(" Grab You Like!");
+        ui->label_videoslist->setFont(englishSlogan);
+
+        // no font size
         ui->textEdit_search->setPlaceholderText("type to search...");
         ui->textEdit_comment->setPlaceholderText("type the comment...");
-
-        ui->pushButton_selficon->setIcon(user);
-        ui->pushButton_likelist->setIcon(like);
-        ui->pushButton_collection->setIcon(collect);
-        ui->pushButton_screenshotlibrary->setIcon(lib);
     }
 }
 
@@ -468,85 +494,54 @@ void MainWindow_player::saveImage(QPixmap pixmap)
     }
 }
 
-
-
-
-
-
 void MainWindow_player::on_pushButton_mode_toggled(bool checked)
-{   //blue
-    if(checked){
-        ui->pushButton_mode->setText("Dark mode");
-        ui->label_logoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt \"Mistral\";\nborder-radius:10px");
+{
+    QFont englishFont11("Mistral", 11);
+    QFont chineseFont11("宋体", 11);
+
+    //blue
+    if(!checked){
+        ui->pushButton_mode->setText(ui->pushButton_language->isChecked() ? "日间模式" : "Light Model");
+        ui->pushButton_mode->setFont(ui->pushButton_language->isChecked() ? chineseFont11 : englishFont11);
+
+        ui->label_logoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px");
         ui->widget_navigation->setStyleSheet("background-color: rgb(28, 63, 170);");
-        ui->pushButton_mode->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
-        ui->pushButton_language->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
+        ui->pushButton_mode->setStyleSheet("color:white;\n\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
+        ui->pushButton_language->setStyleSheet("color:white;\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
         ui->label_logoname_3->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt \"Mistral\";\n\n");
         ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(255, 255, 255);");
         ui->textEdit_comment->setStyleSheet("color: rgb(45, 45, 45);\nbackground-color: rgb(247, 247, 247);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
-        ui->label_comment->setStyleSheet("background-color: rgb(28, 63, 170);\ncolor: rgb(255, 255, 255);\nfont-size:25px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\nfont-weight:700;");
-        ui->label_logoname_4->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt \"Mistral\";\n\n");
+        ui->label_comment->setStyleSheet("background-color: rgb(28, 63, 170);\ncolor: rgb(255, 255, 255);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
+        ui->label_logoname_4->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
         ui->widget_videoslist->setStyleSheet("background-color: rgb(28, 63, 170);\nborder-radius:10px");
         this->setStyleSheet("background-color: rgb(238, 238, 238);\n");
         ui->widget_player->setStyleSheet("border-radius:10px;");
-        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(55, 125, 255);\nfont-weight:600;\nfont-size:16px");
+        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(55, 125, 255);\n");
         ui->widget_searchbox->setStyleSheet("background-color: white; \nborder-radius: 10px;");
 
+        ui->pushButton_uploadfile->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\n");
     }
+
     //black
     else{
-        ui->pushButton_mode->setText("Light mode");
-        ui->label_logoname->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(40, 40, 40);\nfont: 22pt \"Mistral\";\nborder-radius:10px");
+        ui->pushButton_mode->setText(ui->pushButton_language->isChecked() ? "夜间模式" : "Dark Model");
+        ui->pushButton_mode->setFont(ui->pushButton_language->isChecked() ? chineseFont11 : englishFont11);
+
+        ui->label_logoname->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px");
         ui->widget_navigation->setStyleSheet("background-color: rgb(25, 25, 25);");
-        ui->pushButton_mode->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
-        ui->pushButton_language->setStyleSheet("color:white;\nfont: 600 9pt \"Yu Gothic UI Semibold\";\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
-        ui->label_logoname_3->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(50, 50, 50);\nfont: 22pt \"Mistral\";\n\n");
+        ui->pushButton_mode->setStyleSheet("color:white;\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
+        ui->pushButton_language->setStyleSheet("color:white;\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
+        ui->label_logoname_3->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(50, 50, 50);\n");
         ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(25, 25, 25);");
         ui->textEdit_comment->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
-        ui->label_comment->setStyleSheet("background-color: rgb(40, 40, 40);\ncolor: rgb(255, 179, 1);\nfont-size:25px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\nfont-weight:700;");
-        ui->label_logoname_4->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(50, 50, 50);\nfont: 22pt \"Mistral\";\n\n");
-        ui->widget_videoslist->setStyleSheet("background-color: rgb(27, 27, 27);\nborder-radius:10px");
+        ui->label_comment->setStyleSheet("background-color: rgb(40, 40, 40);\ncolor: rgb(255, 179, 1);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
+        ui->label_logoname_4->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(27, 27, 27);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
+        ui->widget_videoslist->setStyleSheet("background-color: rgba(27, 27, 27, 0.6);\nborder-radius:10px");
         this->setStyleSheet("background-color: rgb(50, 50, 50);\n");
         ui->widget_player->setStyleSheet("border-radius:10px;\nbackground-color: rgb(40, 40, 40);");
-        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(40, 40, 40);\nfont-weight:600;\nfont-size:16px");
-        ui->widget_searchbox->setStyleSheet("background-color: white; \nborder-radius: 10px;\nbackground-color: rgb(50, 50, 50);\ncolor: rgb(255, 255, 255);");
+        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(40, 40, 40);\n");
+        ui->widget_searchbox->setStyleSheet("background-color: white; \nborder-radius: 10px;\nbackground-color: rgba(27, 27, 27, 0.6);\ncolor: rgba(255, 255, 255, 0.7);");
+
+        ui->pushButton_uploadfile->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgba(27, 27, 27, 0.6);\n");
     }
 }
-
-
-
-void MainWindow_player::on_pushButton_like_toggled(bool checked)
-{
-    QIcon like(":/new/icons/src/like_gray.png");
-    QIcon cancel_like(":/new/icons/src/liked.png");
-    if(checked){
-        ui->pushButton_like->setIcon(like);
-    }else{
-        ui->pushButton_like->setIcon(cancel_like);
-    }
-}
-
-
-void MainWindow_player::on_pushButton_collect_toggled(bool checked)
-{
-    QIcon collected(":/new/icons/src/collect_gray.png");
-    QIcon cancel_collected(":/new/icons/src/collected.png");
-    if(checked){
-        ui->pushButton_collect->setIcon(collected);
-    }else{
-        ui->pushButton_collect->setIcon(cancel_collected);
-    }
-}
-
-
-void MainWindow_player::on_pushButton_share_toggled(bool checked)
-{
-    QIcon shared(":/new/icons/src/share_gray.png");
-    QIcon cancel_shared(":/new/icons/src/share_gray.png");
-    if(checked){
-        ui->pushButton_share->setIcon(shared);
-    }else{
-        ui->pushButton_share->setIcon(cancel_shared);
-    }
-}
-

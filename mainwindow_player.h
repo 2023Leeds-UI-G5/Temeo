@@ -83,12 +83,6 @@ private slots:
 
     void on_pushButton_mode_toggled(bool checked);
 
-    void on_pushButton_like_toggled(bool checked);
-
-    void on_pushButton_collect_toggled(bool checked);
-
-    void on_pushButton_share_toggled(bool checked);
-
 private:
     Ui::MainWindow_player *ui;
 };

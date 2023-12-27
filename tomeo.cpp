@@ -77,12 +77,12 @@ int main(int argc, char *argv[])
     // collect all the videos in the folder
     std::vector<TheButtonInfo> videos;
 
-    std::string filename = "C:\\Program Files (noroot)\\UI\\Final_proj\\final\\G5UI-cwk\\videos";
+    //std::string filename = "C:\\Program Files (noroot)\\UI\\Final_proj\\final\\G5UI-cwk\\videos";
 
-    // if (argc == 2)
-    //     videos = getInfoIn(std::string(argv[1]));
+    if (argc == 2)
+        videos = getInfoIn(std::string(argv[1]));
 
-    videos = getInfoIn(filename);
+    //videos = getInfoIn(filename);
 
     if (videos.size() == 0) {
         const int result = QMessageBox::information(
