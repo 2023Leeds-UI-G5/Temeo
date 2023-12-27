@@ -35,22 +35,22 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(238, 238, 238);
+   <string notr="true">background-color: rgb(255, 255, 235);
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QWidget" name="widget_additionalfunction" native="true">
     <property name="geometry">
      <rect>
-      <x>200</x>
+      <x>210</x>
       <y>540</y>
-      <width>851</width>
-      <height>201</height>
+      <width>841</width>
+      <height>211</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">border-radius:10px;
-background-color: rgb(255, 255, 255);</string>
+background-color: rgb(245, 245, 224);</string>
     </property>
     <widget class="QPushButton" name="pushButton_sendcomment">
      <property name="geometry">
@@ -72,10 +72,15 @@ background-color: rgb(255, 255, 255);</string>
       <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
-      <string notr="true">color: rgb(255, 255, 255);
-
+      <string notr="true">QPushButton {
+color: rgb(255, 255, 255);
 background-color: rgb(55, 125, 255);
+}
 
+QPushButton:hover {
+background-color: rgba(55, 125, 255, 0.7
+);
+}
 </string>
      </property>
      <property name="text">
@@ -96,6 +101,9 @@ background-color: rgb(55, 125, 255);
        <width>61</width>
        <height>61</height>
       </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
      </property>
      <property name="styleSheet">
       <string notr="true">QPushButton {
@@ -136,7 +144,7 @@ background-color: rgb(55, 125, 255);
      </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(45, 45, 45);
-background-color: rgb(247, 247, 247);
+background-color: rgba(255, 255, 255, 0.5);
 border-radius:10px;
 padding-left:5px;
 padding-top:2px;</string>
@@ -150,14 +158,14 @@ padding-top:2px;</string>
       <rect>
        <x>0</x>
        <y>0</y>
-       <width>851</width>
+       <width>841</width>
        <height>61</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Yu Gothic UI Semibold</family>
-       <pointsize>14</pointsize>
+       <family>Mistral</family>
+       <pointsize>22</pointsize>
        <bold>false</bold>
       </font>
      </property>
@@ -217,7 +225,7 @@ background-color: rgb(0, 85, 255);
       <x>0</x>
       <y>0</y>
       <width>181</width>
-      <height>741</height>
+      <height>771</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -234,16 +242,22 @@ background-color: rgb(0, 85, 255);
      </property>
      <property name="font">
       <font>
-       <family>Times New Roman</family>
+       <family>Yu Gothic UI Semibold</family>
        <pointsize>11</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
-      <string notr="true">color:white;
-
+      <string notr="true">QPushButton {
+color:white;
 background-color: rgb(0, 85, 255);
 border-radius:10px
-</string>
+}
+QPushButton:hover {
+background-color: rgba(0, 85, 255, 0.7);
+}</string>
      </property>
      <property name="text">
       <string>Change Language</string>
@@ -287,6 +301,9 @@ border-radius:10px
        <bold>false</bold>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
       <string notr="true">color: rgb(255, 255, 255);
 background-color: rgb(0, 85, 255);
@@ -324,17 +341,25 @@ border-radius:10px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Times New Roman</family>
+       <family>Yu Gothic UI Semibold</family>
        <pointsize>11</pointsize>
        <italic>false</italic>
        <bold>false</bold>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
-      <string notr="true">color:white;
-
+      <string notr="true">QPushButton {
+color:white;
 background-color: rgb(0, 85, 255);
 border-radius:10px
+}
+
+QPushButton:hover {
+background-color: rgba(0, 85, 255, 0.7);
+}
 </string>
      </property>
      <property name="text">
@@ -357,7 +382,7 @@ border-radius:10px
       <enum>Qt::Horizontal</enum>
      </property>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>0</x>
@@ -371,7 +396,7 @@ border-radius:10px
        <widget class="QPushButton" name="pushButton_likelist">
         <property name="font">
          <font>
-          <family>Times New Roman</family>
+          <family>Yu Gothic UI Semibold</family>
           <pointsize>11</pointsize>
           <bold>false</bold>
          </font>
@@ -380,10 +405,16 @@ border-radius:10px
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">text-align:left;
+         <string notr="true">QPushButton {
+text-align:left;
 color:white;
 border-radius:10px;
-margin-left: 5px;</string>
+margin-left: 15px;
+}
+
+QPushButton:hover {
+    color: rgb(168, 168, 168); 
+}</string>
         </property>
         <property name="text">
          <string>Like List</string>
@@ -398,7 +429,7 @@ margin-left: 5px;</string>
        <widget class="QPushButton" name="pushButton_collection">
         <property name="font">
          <font>
-          <family>Times New Roman</family>
+          <family>Yu Gothic UI Semibold</family>
           <pointsize>11</pointsize>
          </font>
         </property>
@@ -406,11 +437,16 @@ margin-left: 5px;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">text-align:left;
+         <string notr="true">QPushButton {
+text-align:left;
 color:white;
 border-radius:10px;
-margin-left: 5px;
-</string>
+margin-left: 15px;
+}
+
+QPushButton:hover {
+    color: rgb(168, 168, 168); 
+}</string>
         </property>
         <property name="text">
          <string>Collection</string>
@@ -425,7 +461,7 @@ margin-left: 5px;
        <widget class="QPushButton" name="pushButton_screenshotlibrary">
         <property name="font">
          <font>
-          <family>Times New Roman</family>
+          <family>Yu Gothic UI Semibold</family>
           <pointsize>11</pointsize>
          </font>
         </property>
@@ -433,13 +469,16 @@ margin-left: 5px;
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">text-align:left;
-
-
+         <string notr="true">QPushButton {
+text-align:left;
 color:white;
 border-radius:10px;
+margin-left: 15px;
+}
 
-margin-left: 5px;</string>
+QPushButton:hover {
+    color: rgb(168, 168, 168); 
+}</string>
         </property>
         <property name="text">
          <string>Library</string>
@@ -452,7 +491,7 @@ margin-left: 5px;</string>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>10</x>
@@ -495,10 +534,16 @@ margin-left: 5px;</string>
          <cursorShape>PointingHandCursor</cursorShape>
         </property>
         <property name="styleSheet">
-         <string notr="true">color: rgb(255, 255, 255);
+         <string notr="true">
+QPushButton {
+color: rgb(255, 255, 255);
 border-radius:10px;
 margin-right: 5px;
-</string>
+}
+
+QPushButton:hover {
+    color: rgb(168, 168, 168); 
+}</string>
         </property>
         <property name="text">
          <string>Account</string>
@@ -570,16 +615,7 @@ margin-right: 5px;
       </sizepolicy>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(102, 103, 96, 180);
-background-color: rgba(0, 0, 0, 0);
-border-bottom-right-radius:10px;
-border-bottom-left-radius:10px;
-opacity:0;
-border:0px;
-padding-bottom:2px;
-padding-top:2px;
-padding-left:2px;
-padding-right:2px;</string>
+      <string notr="true">background-color: white;</string>
      </property>
      <layout class="QFormLayout" name="formLayout">
       <property name="horizontalSpacing">
@@ -619,8 +655,11 @@ padding-right:2px;</string>
             <height>23</height>
            </size>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="styleSheet">
-           <string notr="true"/>
+           <string notr="true">background-color: none;</string>
           </property>
           <property name="text">
            <string/>
@@ -649,8 +688,11 @@ padding-right:2px;</string>
             <height>16777215</height>
            </size>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="styleSheet">
-           <string notr="true">color: rgb(143, 143, 143);</string>
+           <string notr="true">background-color: none;</string>
           </property>
           <property name="text">
            <string>1.0x</string>
@@ -681,6 +723,12 @@ padding-right:2px;</string>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: none;</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -692,6 +740,9 @@ padding-right:2px;</string>
         </item>
         <item>
          <widget class="QSlider" name="horizontalSlider_position">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -704,6 +755,12 @@ padding-right:2px;</string>
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: none;</string>
           </property>
           <property name="text">
            <string/>
@@ -732,6 +789,12 @@ padding-right:2px;</string>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_volume">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: none;</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -753,6 +816,9 @@ padding-right:2px;</string>
             <verstretch>0</verstretch>
            </sizepolicy>
           </property>
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
@@ -762,6 +828,9 @@ padding-right:2px;</string>
          <widget class="QPushButton" name="pushButton_screenshot">
           <property name="cursor">
            <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: none;</string>
           </property>
           <property name="text">
            <string/>
@@ -780,6 +849,12 @@ padding-right:2px;</string>
         </item>
         <item>
          <widget class="QPushButton" name="pushButton_screencontrol">
+          <property name="cursor">
+           <cursorShape>PointingHandCursor</cursorShape>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background-color: none;</string>
+          </property>
           <property name="text">
            <string/>
           </property>
@@ -817,7 +892,7 @@ border-radius:10px</string>
      <property name="geometry">
       <rect>
        <x>10</x>
-       <y>40</y>
+       <y>30</y>
        <width>241</width>
        <height>31</height>
       </rect>
@@ -830,8 +905,8 @@ border-radius:10px</string>
      </property>
      <property name="font">
       <font>
-       <family>Ravie</family>
-       <pointsize>15</pointsize>
+       <family>Mistral</family>
+       <pointsize>22</pointsize>
        <bold>false</bold>
       </font>
      </property>
@@ -840,7 +915,7 @@ border-radius:10px</string>
 </string>
      </property>
      <property name="text">
-      <string> Grab You Like!</string>
+      <string>Grab Your Like!</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignCenter</set>
@@ -894,7 +969,7 @@ border-radius:10px</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: white; 
+      <string notr="true">background-color: rgb(245, 245, 224); 
 border-radius: 10px;</string>
      </property>
      <widget class="QPushButton" name="pushButton_search">
@@ -910,7 +985,13 @@ border-radius: 10px;</string>
        <cursorShape>PointingHandCursor</cursorShape>
       </property>
       <property name="styleSheet">
-       <string notr="true"/>
+       <string notr="true">QPushButton {
+}
+
+QPushButton:hover {
+    iconSize-weight: 30;
+	
+}</string>
       </property>
       <property name="text">
        <string/>
@@ -943,36 +1024,6 @@ border-radius: 10px;</string>
       </property>
      </widget>
     </widget>
-    <widget class="QLabel" name="label_logoname_4">
-     <property name="geometry">
-      <rect>
-       <x>0</x>
-       <y>0</y>
-       <width>261</width>
-       <height>31</height>
-      </rect>
-     </property>
-     <property name="font">
-      <font>
-       <family>Mistral</family>
-       <pointsize>22</pointsize>
-       <italic>false</italic>
-       <bold>false</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: rgb(255, 255, 255);
-background-color: rgb(0, 85, 255);
-
-border-raidus: 0px;</string>
-     </property>
-     <property name="text">
-      <string>Temeo</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignCenter</set>
-     </property>
-    </widget>
     <widget class="QPushButton" name="pushButton_uploadfile">
      <property name="geometry">
       <rect>
@@ -984,19 +1035,24 @@ border-raidus: 0px;</string>
      </property>
      <property name="font">
       <font>
-       <family>Times New Roman</family>
+       <family>Yu Gothic UI Semibold</family>
        <pointsize>11</pointsize>
       </font>
      </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
      <property name="styleSheet">
-      <string notr="true">color:white;
-
-background-color: rgb(0, 85, 255);
-border-radius:10px
-</string>
+      <string notr="true">QPushButton{
+	color:white;
+	background-color: rgb(0, 85, 255);
+}
+QPushButton:hover {
+	background-color: rgba(0, 85, 255, 0.7);
+}</string>
      </property>
      <property name="text">
-      <string>Choose Video File</string>
+      <string>Choose Video File List</string>
      </property>
     </widget>
    </widget>
@@ -1018,38 +1074,39 @@ border-radius:10px
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
-background-color: rgba(136, 136, 136, 30);
+background-color: rgba(0, 0, 0, 0.3);
 
 border-top-left-radius:10px;
 border-top-right-radius:10px;
 padding-left:15px;</string>
     </property>
     <property name="text">
-     <string>a.wmv</string>
+     <string/>
     </property>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QWidget" name="widget_functionbar" native="true">
     <property name="geometry">
      <rect>
       <x>210</x>
       <y>490</y>
       <width>841</width>
-      <height>41</height>
+      <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">border-top-left-radius:0px;
 border-top-right-radius:0px;
 border-bottom-left-radius:10px;
-border-bottom-right-radius:10px;</string>
+border-bottom-right-radius:10px;
+background-color: rgb(245, 245, 224);</string>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
-       <x>0</x>
-       <y>10</y>
-       <width>841</width>
-       <height>28</height>
+       <x>40</x>
+       <y>-3</y>
+       <width>761</width>
+       <height>41</height>
       </rect>
      </property>
      <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -1063,6 +1120,9 @@ border-bottom-right-radius:10px;</string>
         </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: none; </string>
         </property>
         <property name="text">
          <string/>
@@ -1087,16 +1147,6 @@ border-bottom-right-radius:10px;</string>
        </widget>
       </item>
       <item>
-       <widget class="Line" name="line_2">
-        <property name="styleSheet">
-         <string notr="true">border-left:2px solid rgb(186, 186, 186);</string>
-        </property>
-        <property name="orientation">
-         <enum>Qt::Vertical</enum>
-        </property>
-       </widget>
-      </item>
-      <item>
        <widget class="QPushButton" name="pushButton_collect">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1106,6 +1156,9 @@ border-bottom-right-radius:10px;</string>
         </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: none;</string>
         </property>
         <property name="text">
          <string/>
@@ -1130,14 +1183,17 @@ border-bottom-right-radius:10px;</string>
        </widget>
       </item>
       <item>
-       <widget class="Line" name="line_6">
-        <property name="styleSheet">
-         <string notr="true">border-left:2px solid rgb(186, 186, 186);</string>
-        </property>
+       <spacer name="horizontalSpacer">
         <property name="orientation">
-         <enum>Qt::Vertical</enum>
+         <enum>Qt::Horizontal</enum>
         </property>
-       </widget>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>40</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
       </item>
       <item>
        <widget class="QPushButton" name="pushButton_share">
@@ -1149,6 +1205,9 @@ border-bottom-right-radius:10px;</string>
         </property>
         <property name="cursor">
          <cursorShape>PointingHandCursor</cursorShape>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">background-color: none; </string>
         </property>
         <property name="text">
          <string/>
@@ -1175,17 +1234,12 @@ border-bottom-right-radius:10px;</string>
      </layout>
     </widget>
    </widget>
-   <zorder>widget</zorder>
+   <zorder>label_videoname</zorder>
+   <zorder>widget_functionbar</zorder>
    <zorder>widget_videoslist</zorder>
    <zorder>widget_additionalfunction</zorder>
    <zorder>widget_navigation</zorder>
    <zorder>widget_player</zorder>
-   <zorder>label_videoname</zorder>
-   <zorder>pushButton_share</zorder>
-   <zorder>pushButton_like</zorder>
-   <zorder>line_6</zorder>
-   <zorder>line_2</zorder>
-   <zorder>pushButton_collect</zorder>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

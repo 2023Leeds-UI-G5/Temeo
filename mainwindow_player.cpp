@@ -31,6 +31,7 @@ MainWindow_player::MainWindow_player(QWidget *parent)
     connect(player, SIGNAL(positionChanged(qint64)), this, SLOT(onPositionChanged(qint64)));
 
     connect(player, SIGNAL(durationChanged(qint64)), this, SLOT(onDurationChanged(qint64)));
+
 }
 
 // Destructor
@@ -344,20 +345,18 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
 {
 
     QFont englishFont11("Yu Gothic UI Semibold", 11);
-    QFont englishFont14("Mistral", 14);
-    QFont chineseFont11("宋体", 11);
-    QFont chineseFont14("宋体", 14);
+    QFont englishFont14("Times New Roman", 14);
+    QFont chineseFont11("幼圆", 12);
+    QFont chineseFont14("幼圆", 16);
 
-    QFont englishSlogan("Mistral", 15);
-    QFont chineseSlogan("Times New Roman", 11);
+    QFont englishSlogan("Mistral", 22);
+    QFont chineseSlogan("方正舒体", 24);
 
     if (checked) {
         // size 14
         ui->pushButton_account->setText("账户");
-        ui->label_comment->setText("写下你所想！");
         ui->pushButton_sendcomment->setText("发送");
         ui->pushButton_account->setFont(chineseFont14);
-        ui->label_comment->setFont(chineseFont14);
         ui->pushButton_sendcomment->setFont(chineseFont14);
 
         // size 11
@@ -365,16 +364,20 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
         ui->pushButton_collection->setText("收藏夹");
         ui->pushButton_screenshotlibrary->setText("截图库");
         ui->pushButton_language->setText("切换语言");
+        ui->pushButton_uploadfile->setText("选择播放目录");
         ui->pushButton_mode->setText(ui->pushButton_mode->isChecked() ? "夜间模式" : "日间模式");
         ui->pushButton_likelist->setFont(chineseFont11);
         ui->pushButton_collection->setFont(chineseFont11);
         ui->pushButton_screenshotlibrary->setFont(chineseFont11);
         ui->pushButton_language->setFont(chineseFont11);
         ui->pushButton_mode->setFont(chineseFont11);
+        ui->pushButton_uploadfile->setFont(chineseFont11);
 
-        // 标语/Slogan
-        ui->label_videoslist->setText("你所热爱的！");
-        ui->label_videoslist->setFont(chineseSlogan);
+        // // 标语/Slogan
+        // ui->label_comment->setText("写下你所想！");
+        // ui->label_videoslist->setText("你所热爱的！");
+        // ui->label_comment->setFont(chineseSlogan);
+        // ui->label_videoslist->setFont(chineseSlogan);
 
         // no font size
         ui->textEdit_search->setPlaceholderText("输入视频标题...");
@@ -383,27 +386,29 @@ void MainWindow_player::on_pushButton_language_toggled(bool checked)
     } else {
         // size 14
         ui->pushButton_account->setText("Account");
-        ui->label_comment->setText("Write down your opinion!");
         ui->pushButton_sendcomment->setText("POST");
         ui->pushButton_account->setFont(englishFont14);
-        ui->label_comment->setFont(englishFont14);
         ui->pushButton_sendcomment->setFont(englishFont14);
 
         // size 11
         ui->pushButton_likelist->setText("Like List");
         ui->pushButton_collection->setText("Collection");
-        ui->pushButton_screenshotlibrary->setText("Screenshot Library");
+        ui->pushButton_screenshotlibrary->setText("Library");
         ui->pushButton_language->setText("Change Language");
+        ui->pushButton_uploadfile->setText("Choose Video File List");
         ui->pushButton_mode->setText(ui->pushButton_mode->isChecked() ? "Dark Modal" : "Light Modal");
         ui->pushButton_likelist->setFont(englishFont11);
         ui->pushButton_collection->setFont(englishFont11);
         ui->pushButton_screenshotlibrary->setFont(englishFont11);
         ui->pushButton_language->setFont(englishFont11);
         ui->pushButton_mode->setFont(chineseFont11);
+        ui->pushButton_uploadfile->setFont(chineseFont11);
 
-        // 标语/Slogan
-        ui->label_videoslist->setText(" Grab You Like!");
-        ui->label_videoslist->setFont(englishSlogan);
+        // // 标语/Slogan
+        // ui->label_comment->setText("Write down your opinion!");
+        // ui->label_videoslist->setText("Grab You Like!");
+        // ui->label_videoslist->setFont(englishSlogan);
+        // ui->label_comment->setFont(englishSlogan);
 
         // no font size
         ui->textEdit_search->setPlaceholderText("type to search...");
@@ -504,22 +509,38 @@ void MainWindow_player::on_pushButton_mode_toggled(bool checked)
         ui->pushButton_mode->setText(ui->pushButton_language->isChecked() ? "日间模式" : "Light Model");
         ui->pushButton_mode->setFont(ui->pushButton_language->isChecked() ? chineseFont11 : englishFont11);
 
-        ui->label_logoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px");
-        ui->widget_navigation->setStyleSheet("background-color: rgb(28, 63, 170);");
-        ui->pushButton_mode->setStyleSheet("color:white;\n\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
-        ui->pushButton_language->setStyleSheet("color:white;\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n");
-        ui->label_logoname_3->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt \"Mistral\";\n\n");
-        ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(255, 255, 255);");
-        ui->textEdit_comment->setStyleSheet("color: rgb(45, 45, 45);\nbackground-color: rgb(247, 247, 247);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
-        ui->label_comment->setStyleSheet("background-color: rgb(28, 63, 170);\ncolor: rgb(255, 255, 255);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
-        ui->label_logoname_4->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
-        ui->widget_videoslist->setStyleSheet("background-color: rgb(28, 63, 170);\nborder-radius:10px");
-        this->setStyleSheet("background-color: rgb(238, 238, 238);\n");
-        ui->widget_player->setStyleSheet("border-radius:10px;");
-        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(55, 125, 255);\n");
-        ui->widget_searchbox->setStyleSheet("background-color: white; \nborder-radius: 10px;");
+        this->setStyleSheet("background-color: rgb(245,245,220);\n");
+        ui->label_videoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgba(0, 0, 0, 0.3);\n\nborder-top-left-radius:10px;\nborder-top-right-radius:10px;\npadding-left:15px;");
 
-        ui->pushButton_uploadfile->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\n");
+        // widget_additionalfunction
+        ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(245, 245, 224);");
+        ui->label_comment->setStyleSheet("background-color: rgb(28, 63, 170);\ncolor: rgb(255, 255, 255);\npadding-right: 7px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
+        ui->label_logoname_3->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\n\n\n");
+        ui->pushButton_sendcomment->setStyleSheet("QPushButton {\ncolor: rgb(255, 255, 255);\nbackground-color: rgb(55, 125, 255);\n}\n\nQPushButton:hover {\nbackground-color: rgba(55, 125, 255, 0.7\n);\n}\n");
+        ui->textEdit_comment->setStyleSheet("color: rgb(45, 45, 45);\nbackground-color: rgba(255, 255, 255, 0.5);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
+
+        // label_videoname
+        ui->label_videoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgba(0, 0, 0, 0.3);\n\nborder-top-left-radius:10px;\nborder-top-right-radius:10px;\npadding-left:15px;");
+
+        // widget_functionbar
+        ui->widget_functionbar->setStyleSheet("border-top-left-radius:0px;\nborder-top-right-radius:0px;\nborder-bottom-left-radius:10px;\nborder-bottom-right-radius:10px;\nbackground-color: rgb(245, 245, 224);");
+
+        // widget_navigation
+        ui->widget_navigation->setStyleSheet("background-color: rgb(28, 63, 170);");
+        ui->label_logoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt 'Mistral';\nborder-radius:10px;");
+        ui->pushButton_language->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n}\nQPushButton:hover {\nbackground-color: rgba(0, 85, 255, 0.7);\n}");
+        ui->pushButton_mode->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 255, 0.7);\n}\n");
+
+        // widget_player
+        ui->widget_player->setStyleSheet("");
+        ui->widget_toolbar->setStyleSheet("background-color: white;");
+        ui->widget_video->setStyleSheet("background-color: lightgray;");
+
+        // widget_videoslist
+        ui->widget_videoslist->setStyleSheet("background-color: rgb(28, 63, 170);\nborder-radius:10px");
+        ui->pushButton_uploadfile->setStyleSheet("QPushButton{\n	color:white;\n	background-color: rgb(0, 85, 255);\n}\nQPushButton:hover {\n	background-color: rgba(0, 85, 255, 0.7);\n}");
+        ui->widget_searchbox->setStyleSheet("background-color: rgb(245, 245, 224); \nborder-radius: 10px;");
+        ui->textEdit_search->setStyleSheet("background-color: white; \nborder-radius: 10px;");
     }
 
     //black
@@ -527,21 +548,89 @@ void MainWindow_player::on_pushButton_mode_toggled(bool checked)
         ui->pushButton_mode->setText(ui->pushButton_language->isChecked() ? "夜间模式" : "Dark Model");
         ui->pushButton_mode->setFont(ui->pushButton_language->isChecked() ? chineseFont11 : englishFont11);
 
-        ui->label_logoname->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px");
-        ui->widget_navigation->setStyleSheet("background-color: rgb(25, 25, 25);");
-        ui->pushButton_mode->setStyleSheet("color:white;\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
-        ui->pushButton_language->setStyleSheet("color:white;\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px\n");
-        ui->label_logoname_3->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(50, 50, 50);\n");
-        ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(25, 25, 25);");
-        ui->textEdit_comment->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(40, 40, 40);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
-        ui->label_comment->setStyleSheet("background-color: rgb(40, 40, 40);\ncolor: rgb(255, 179, 1);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
-        ui->label_logoname_4->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgb(27, 27, 27);\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
-        ui->widget_videoslist->setStyleSheet("background-color: rgba(27, 27, 27, 0.6);\nborder-radius:10px");
-        this->setStyleSheet("background-color: rgb(50, 50, 50);\n");
-        ui->widget_player->setStyleSheet("border-radius:10px;\nbackground-color: rgb(40, 40, 40);");
-        ui->pushButton_sendcomment->setStyleSheet("color: rgb(255, 255, 255);\n\nbackground-color: rgb(40, 40, 40);\n");
-        ui->widget_searchbox->setStyleSheet("background-color: white; \nborder-radius: 10px;\nbackground-color: rgba(27, 27, 27, 0.6);\ncolor: rgba(255, 255, 255, 0.7);");
+        this->setStyleSheet("background-color: rgb(18,18,18);\n");
 
-        ui->pushButton_uploadfile->setStyleSheet("color: rgb(255, 179, 1);\nbackground-color: rgba(27, 27, 27, 0.6);\n");
+        // widget_additionalfunction
+        ui->widget_additionalfunction->setStyleSheet("border-radius:10px;\nbackground-color: rgb(44, 44, 44);");
+        ui->label_comment->setStyleSheet("background-color: rgb(0, 53, 77);\ncolor: rgb(185, 185, 92);\npadding-right: 7px;\nborder-bottom-right-radius:0px;\nborder-bottom-left-radius:0px;\n");
+        ui->label_logoname_3->setStyleSheet("color: rgb(185, 185, 92);\nbackground-color: rgb(0, 85, 127);\n\n\n");
+        ui->pushButton_sendcomment->setStyleSheet("QPushButton {\ncolor: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 127);\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 127, 0.7);\n}\n");
+        ui->textEdit_comment->setStyleSheet("color: rgb(227, 227, 227);\nbackground-color: rgb(68, 68, 68);\nborder-radius:10px;\npadding-left:5px;\npadding-top:2px;");
+
+        // label_videoname
+        ui->label_videoname->setStyleSheet("color: rgb(185, 185, 92);\nbackground-color: rgb(0, 53, 77);\n\nborder-top-left-radius:10px;\nborder-top-right-radius:10px;\npadding-left:15px;");
+
+        // widget_functionbar
+        ui->widget_functionbar->setStyleSheet("border-top-left-radius:0px;\nborder-top-right-radius:0px;\nborder-bottom-left-radius:10px;\nborder-bottom-right-radius:10px;\nbackground-color: rgb(68, 68, 68);");
+
+        // widget_navigation
+        ui->widget_navigation->setStyleSheet("background-color: rgb(0, 53, 77);");
+        ui->label_logoname->setStyleSheet("color: rgb(185, 185, 92);\nbackground-color: rgb(0, 85, 127);\nfont: 22pt 'Mistral';\nborder-radius:10px;");
+        ui->pushButton_language->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 127);\nborder-radius:10px\n}\nQPushButton:hover {\nbackground-color: rgba(0, 85, 127, 0.7);\n}");
+        ui->pushButton_mode->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 127);\nborder-radius:10px\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 127, 0.7);\n}\n");
+
+        // widget_player
+        ui->widget_player->setStyleSheet("background-color: rgb(44, 44, 44);");
+        ui->widget_toolbar->setStyleSheet("background-color: rgb(44, 44, 44);");
+        ui->widget_video->setStyleSheet("background-color: rgb(44, 44, 44);");
+
+        // widget_videoslist
+        ui->widget_videoslist->setStyleSheet("background-color: rgb(0, 53, 77);\nborder-radius:10px");
+        ui->pushButton_uploadfile->setStyleSheet("QPushButton{\nbackground-color: rgb(0, 85, 127);\n}\nQPushButton:hover {\n	background-color: rgba(0, 85, 127, 0.7);\n}");
+        ui->widget_searchbox->setStyleSheet("background-color: rgb(0, 85, 127); \nborder-radius: 10px;");
+        ui->textEdit_search->setStyleSheet("color: rgb(227, 227, 227);");
     }
 }
+
+// read in videos and thumbnails to this directory
+std::vector<TheButtonInfo> MainWindow_player::getInfoIn(std::string loc)
+{
+    std::vector<TheButtonInfo> out = std::vector<TheButtonInfo>();
+    QDir dir(QString::fromStdString(loc));
+    QDirIterator it(dir);
+
+    while (it.hasNext()) { // for all files
+
+        QString f = it.next();
+
+        if (f.contains("."))
+
+#if defined(_WIN32)
+        if (f.contains(".wmv")) { // windows
+#else
+        if (f.contains(".mp4") || f.contains("MOV")) { // mac/linux
+#endif
+
+            QString thumb = f.left(f.length() - 4) + ".png";
+            if (QFile(thumb).exists()) { // if a png thumbnail exists
+                QImageReader *imageReader = new QImageReader(thumb);
+                QImage sprite = imageReader->read(); // read the thumbnail
+                if (!sprite.isNull()) {
+                    QIcon *ico = new QIcon(
+                        QPixmap::fromImage(sprite)); // voodoo to create an icon for the button
+                    QUrl *url = new QUrl(
+                        QUrl::fromLocalFile(f)); // convert the file location to a generic url
+                    out.push_back(TheButtonInfo(url, ico)); // add to the output list
+                } else
+                    qDebug() << "warning: skipping video because I couldn't process thumbnail "
+                             << thumb << endl;
+            } else
+                qDebug() << "warning: skipping video because I couldn't find thumbnail "
+                         << thumb << endl;
+        }
+    }
+
+    return out;
+}
+
+void MainWindow_player::on_pushButton_uploadfile_clicked()
+{
+    QString folderPath = QFileDialog::getExistingDirectory(this, ui->pushButton_language->isChecked() ? "选择文件夹" : "Choose videos file", QDir::homePath());
+    std::string filepath = folderPath.toStdString();
+
+    if (!folderPath.isEmpty()) {
+        videos = getInfoIn(filepath);
+        videosListInit(videos);
+    }
+}
+

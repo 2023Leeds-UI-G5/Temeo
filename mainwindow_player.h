@@ -6,6 +6,9 @@
 #define MAINWINDOW_PLAYER_H
 
 #include <QDateTime>
+#include <QDesktopServices>
+#include <QDirIterator>
+#include <QImageReader>
 #include <QDir>
 #include <QFileDialog>
 #include <QImageWriter>
@@ -15,7 +18,7 @@
 #include <QMouseEvent>
 #include <QScreen>
 #include <QVideoWidget>
-#include <Qstring>
+#include <QPropertyAnimation>
 
 #include "the_button.h"
 
@@ -36,6 +39,8 @@ public:
     void jumpTo(TheButtonInfo *buttonInfo);
 
     void saveImage(QPixmap pixmap);
+
+    std::vector<TheButtonInfo> getInfoIn(std::string loc);
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
@@ -82,6 +87,8 @@ private slots:
     void on_pushButton_screenshot_clicked();
 
     void on_pushButton_mode_toggled(bool checked);
+
+    void on_pushButton_uploadfile_clicked();
 
 private:
     Ui::MainWindow_player *ui;

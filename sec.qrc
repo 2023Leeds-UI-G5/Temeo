@@ -38,5 +38,7 @@
         <file>src/share_whit.png</file>
         <file>src/smallscreen_white.png</file>
         <file>src/volume_white.png</file>
+        <file>src/moon.png</file>
+        <file>src/sun.png</file>
     </qresource>
 </RCC>
