@@ -214,9 +214,7 @@ Feel free to contact them through GitHub for specific inquiries related to their
 5. **Does the software support streaming services like Netflix or YouTube?**
    - No, this software is a local video player and only supports basic local video playback.
 
-6. **Does it support adjusting video quality or resolution?
-
-**
+6. **Does it support adjusting video quality or resolution?**
    - No, this software only supports playing videos in their original resolution.
 
 7. **What video formats does the software support?**
