@@ -92,12 +92,6 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
     } else {
         showNormal();
 
-        ui->widget_navigation->setVisible(1);
-        ui->widget_videoslist->setVisible(1);
-        ui->widget_videoname->setVisible(1);
-        ui->widget_functionbar->setVisible(1);
-        ui->widget_additionalfunction->setVisible(1);
-
         ui->widget_player->setGeometry(m_rect);
 
         // Restore the geometry of ui->widget_video
@@ -111,8 +105,14 @@ void MainWindow_player::on_pushButton_screencontrol_toggled(bool checked)
                                         m_rect.height() - ui->widget_toolbar->height(),
                                         m_rect.width(),
                                         ui->widget_toolbar->height());
+
+        ui->widget_navigation->setVisible(1);
+        ui->widget_videoslist->setVisible(1);
+        ui->widget_videoname->setVisible(1);
+        ui->widget_functionbar->setVisible(1);
+        ui->widget_additionalfunction->setVisible(1);
     }
-    if(positionTime == durationTime)
+    if(positionTime == durationTime && player->isVideoAvailable())
     {
         player->setMedia(*nowInfo->url);
         player->setPosition(player->duration());
@@ -549,6 +549,7 @@ void MainWindow_player::on_pushButton_mode_toggled(bool checked)
         ui->label_logoname->setStyleSheet("color: rgb(255, 255, 255);\nbackground-color: rgb(0, 85, 255);\nfont: 22pt 'Mistral';\nborder-radius:10px;");
         ui->pushButton_language->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n}\nQPushButton:hover {\nbackground-color: rgba(0, 85, 255, 0.7);\n}");
         ui->pushButton_mode->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 255, 0.7);\n}\n");
+        ui->pushButton_FAQ->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 255);\nborder-radius:10px\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 255, 0.7);\n}\n");
 
         // widget_player
         ui->widget_player->setStyleSheet("");
@@ -586,6 +587,7 @@ void MainWindow_player::on_pushButton_mode_toggled(bool checked)
         ui->label_logoname->setStyleSheet("color: rgb(185, 185, 92);\nbackground-color: rgb(0, 85, 127);\nfont: 22pt 'Mistral';\nborder-radius:10px;");
         ui->pushButton_language->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 127);\nborder-radius:10px\n}\nQPushButton:hover {\nbackground-color: rgba(0, 85, 127, 0.7);\n}");
         ui->pushButton_mode->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 127);\nborder-radius:10px\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 127, 0.7);\n}\n");
+        ui->pushButton_FAQ->setStyleSheet("QPushButton {\ncolor:white;\nbackground-color: rgb(0, 85, 127);\nborder-radius:10px\n}\n\nQPushButton:hover {\nbackground-color: rgba(0, 85, 127, 0.7);\n}\n");
 
         // widget_player
         ui->widget_player->setStyleSheet("background-color: rgb(44, 44, 44);");
@@ -650,5 +652,98 @@ void MainWindow_player::on_pushButton_uploadfile_clicked()
         videos = getInfoIn(filepath);
         videosListInit(videos);
     }
+}
+
+
+void MainWindow_player::on_pushButton_FAQ_clicked()
+{
+    QLayout *tmpLayout = faqWindow.layout();
+    ui->pushButton_playandpause->setChecked(0);
+
+    if (tmpLayout) {
+
+        faqWindow.show();
+        return;
+    }
+
+    std::string faqText =
+        "FAQ\n"
+        "English version\n"
+        "1. Why does the software show no available video to play when I try to launch it directly?\n"
+        "Before playing a video, click on the button in the upper right corner to Choose your playback directory and the video you want to play. After completing this operation, you will be able to play the desired video.\n\n"
+        "2.Why do some buttons in the software have no effect when clicked?\n"
+        "The main functions of this software include playing, pausing, adjusting video volume, changing playback speed, uploading videos, switching interface language, and toggling between day and night modes. Other buttons are decorative and do not perform specific functions.\n\n"
+        "3.Why do I encounter license issues when trying to launch the project?\n"
+        "This is due to license verification failure caused by Qt's educational license. To resolve this issue, download the community version of Qt and try registering/logging in with your personal (non-educational) account.\n\n"
+        "4.Why does Qt encounter errors during the Qmake process?\n"
+        "If you encounter this issue, check the integrity of the current installation files and ensure that no additional modifications have been made to the files. Follow these steps:\n"
+        "4.1 Click on the toolbar on the screen and select Maintenance Tool to launch it.\n"
+        "4.2 Complete license login and verification.\n"
+        "4.3 Select Add or Remove Components.\n"
+        "4.4 Check whether it includes all components of Qt Design Studio 4.3.2, Qt 5.15.2, Qt Creator 12.0.1, Qt Creator 12.0.1 CDB Debugger Support, Debugging Tools for Windows (if you are using Windows), Qt Creator 12.0.1 Debug Symbols, Qt Creator 12.0.1 Plugin Development, MinGW 8.1.0 32-bit or MinGW 8.1.0 64-bit, Ninja 1.10.2, OpenSSL 3.0.12 Toolkit.\n"
+        "4.5 If some components are not installed, check and install them.\n\n"
+        "5.Does the software support streaming services like Netflix or YouTube?\n"
+        "No, this software is a local video player and only supports basic local video playback.\n\n"
+        "6.Does it support adjusting video quality or resolution?\n"
+        "No, this software only supports playing videos in their original resolution.\n\n"
+        "7.What video formats does the software support?\n"
+        "The software supports WMV format on Windows, MP4 format on Mac, and MOC format on Linux.\n\n"
+        "8.How does the software handle user data to protect privacy?\n"
+        "All videos are played locally, and the software does not have online functionality. It does not upload or misuse user data.\n\n"
+        "9.Can I use different language versions of the software for different regions?\n"
+        "Yes, the software can automatically detect the current geographical location. If in China, the language will be set to Chinese. If the user is outside of China, the interface will be set to English.\n\n"
+        "10.If the software encounters issues, how can I contact the corresponding personnel?\n\n"
+        "Technical Support Contact:\n"
+        "Email: 1940660815@qq.com, sc21jz2@leeds.ac.uk, Jingwei Zhang, Sheng Ning\n"
+        "Address: Xian Road 999, Sichuan, Southwest Jiaotong University.\n"
+        "-------------------------------------------------------------------\n"
+        "Chinese version\n"
+        "1. 为什么当我尝试直接启动软件的时候显示没有可用的播放视频？\n"
+        "在播放视频之前，点击右上角的选择播放目录的按钮，选择你的播放目录和你需要播放的视频，完成操作后就能播放你需要的视频。\n\n"
+        "2. 为什么软件中有些按钮点击之后没有对应的效果？\n"
+        "本软件的主要功能是实现视频的播放、暂停、视频音量的调节、视频播放倍速调节、视频上传、界面语言切换，以及界面日间模式和夜间模式的切换。其他的按钮均为装饰性按钮。\n\n"
+        "3. 为什么尝试启动项目的时候显示许可证问题？\n"
+        "这是由于Qt的教育许可证导致的许可证验证失败问题。要解决这个问题，请下载社区版本的Qt并尝试使用自己的非教育账号（私人账号）注册登录。\n\n"
+        "4. 为什么Qt在Qmake的过程中出现错误？\n"
+        "如遇到此问题，请检查当前的安装文件的完整性，并确保没有对文件进行额外的改动。具体检查操作流程是：\n"
+        "4.1点击屏幕上的工具栏，选择 Maintenance Tool 并启动 Maintenance Tool。\n"
+        "4.2完成许可证的登录和验证。\n"
+        "4.3选择添加或移除组件。\n"
+        "4.4检查是否包含了Qt Design Studio 4.3.2，Qt 5.15.2 的所有组件，Developer and Designer Tools 中的Qt Creator 12.0.1，Qt Creator 12.0.1 CDB Debugger Support，Debugging Tools for Windows（如果你使用Windows系统），Qt Creator 12.0.1 Debug Symbols，Qt Creator 12.0.1 Plugin Development，MinGW 8.1.0 32-bit或者MinGW 8.1.0 64-bit，MinGW 8.1.0 64-bit，Ninja 1.10.2，OpenSSL 3.0.12 Toolkit。\n"
+        "4.5如果出现部分组件未安装，勾选并安装组件。\n\n"
+        "5.是否支持流媒体服务（如Netflix、YouTube等）？\n"
+        "不能，此软件是本地的视频播放器，只支持基本的本地视频播放。\n\n"
+        "6.是否支持画质或者分辨率的调整？\n"
+        "不支持，本软件只支持原生分辨率播放视频。\n\n"
+        "7.本软件支持的视频格式有哪些？\n"
+        "软件支持Windows系统下WMV格式的视频播放，Mac系统下的MP4格式的视频播放，以及Linux系统下的MOC格式的视频播放。\n\n"
+        "8.该软件如何处理用户数据保护用户隐私？\n"
+        "对于所有的视频，均采用本地播放的形式，本软件不具备联网的功能，不会上传和滥用用户数据。\n\n"
+        "9.对于不同的地区，我能使用不同语言版本的软件吗？\n"
+        "可以，软件能够自动获取当前的地理位置。如果是在中国，则将语言自动设置为中文。如果用户地理位置在中国以外的地方，将会采取英文界面。\n\n"
+        "10.软件出现问题，我如何联系对应的工作人员呢？\n\n"
+        "技术人员联系方式：\n"
+        "邮箱：1940660815@qq.com, sc21jz2@leeds.ac.uk,Jingwei Zhang, Sheng Ning\n"
+        "联系地址：四川省犀安路999号，西南交通大学。\n";
+
+    faqWindow.setWindowTitle("FaQ Viewer");
+    faqWindow.setWindowModality(Qt::ApplicationModal);
+
+    QTextEdit *textEdit = new QTextEdit(&faqWindow);
+    textEdit->setPlainText(QString::fromStdString(faqText));
+    textEdit->setReadOnly(true);
+
+    // 创建垂直布局，并将QTextEdit添加到布局中
+    QVBoxLayout *layout = new QVBoxLayout(&faqWindow);
+    layout->addWidget(textEdit);
+
+    // 设置布局到faqWindow
+    faqWindow.setLayout(layout);
+    faqWindow.setGeometry(this->x() + this->width() / 3,
+                          this->y() + this->height() / 3,
+                          this->width() / 3,
+                          this->height() / 3);
+
+    faqWindow.show();
 }
 

@@ -57,6 +57,7 @@ private:
     std::vector<TheButtonInfo> videos, tmpVideos;
     QRect m_rect;
     QWidget picWindow;
+    QWidget faqWindow;
 
 private slots:
     void on_pushButton_playandpause_toggled(bool checked);
@@ -90,6 +91,8 @@ private slots:
     void on_pushButton_mode_toggled(bool checked);
 
     void on_pushButton_uploadfile_clicked();
+
+    void on_pushButton_FAQ_clicked();
 
 private:
     Ui::MainWindow_player *ui;

@@ -291,6 +291,42 @@ QPushButton:hover {
         </widget>
        </item>
        <item>
+        <widget class="QPushButton" name="pushButton_FAQ">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>30</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>11</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+color:white;
+background-color: rgb(0, 85, 255);
+border-radius:10px
+}
+
+QPushButton:hover {
+background-color: rgba(0, 85, 255, 0.7);
+}
+</string>
+         </property>
+         <property name="text">
+          <string>FaQ</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="pushButton_mode">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -328,7 +364,7 @@ background-color: rgba(0, 85, 255, 0.7);
 </string>
          </property>
          <property name="text">
-          <string>Light mode</string>
+          <string>Light Model</string>
          </property>
          <property name="checkable">
           <bool>true</bool>
@@ -1442,13 +1478,7 @@ border-radius: 10px;</string>
            <cursorShape>PointingHandCursor</cursorShape>
           </property>
           <property name="styleSheet">
-           <string notr="true">QPushButton {
-}
-
-QPushButton:hover {
-    iconSize-weight: 30;
-	
-}</string>
+           <string notr="true"/>
           </property>
           <property name="text">
            <string/>
@@ -1519,8 +1549,8 @@ QPushButton:hover {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>243</width>
-            <height>596</height>
+            <width>241</width>
+            <height>579</height>
            </rect>
           </property>
          </widget>
@@ -1530,12 +1560,8 @@ QPushButton:hover {
      </widget>
     </item>
    </layout>
-   <zorder>widget_videoname</zorder>
    <zorder>widget_videoslist</zorder>
-   <zorder>widget_additionalfunction</zorder>
    <zorder>widget_navigation</zorder>
-   <zorder>widget_functionbar</zorder>
-   <zorder>verticalSpacer_3</zorder>
    <zorder>horizontalSpacer_2</zorder>
    <zorder>horizontalSpacer_3</zorder>
   </widget>
