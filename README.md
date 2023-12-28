@@ -53,30 +53,22 @@ Welcome to the Temeo Video App Prototype! This project is a collaborative effort
 
 ## Features
 
-- **Fundamental Player Functionalities:**
-  - Implemented play, pause, progress bar, and volume control.
-- **Video Playlist Management:**
-  - Established a video playlist linked to the "videos" folder.
-  - Enabled video playback initiation through a simple click on icons within the playlist.
+1. **Basic Control Features:**
+   - Implemented play, pause, progress bar, and volume control.
+   - Added fast playback, fast forward/backward, and full-screen playback functionalities.
+   - Introduced shortcuts for enhanced user control.
 
-- **Enhanced Playback Control (V2.0):**
-  - Added fast playback, fast forward/back, and full-screen playback functionalities.
-  - Introduced shortcuts for enhanced user control.
+2. **Playlist-related Features:**
+   - Established a video playlist linked to the "videos" folder.
+   - Enabled video playback initiation through a simple click on icons within the playlist.
+   - Introduced a search function for the playlist.
+   - Implemented the option to freely select a video folder as the video playback playlist.
 
-- **Optimizations and New Features (V3.0):**
-  - Adjusted interface layout for improved aesthetics.
-  - Increased icon diversity for enhanced visual appeal.
-  - Added interfaces to accommodate upcoming functionalities.
-  - Implemented a video screenshot feature.
-  - Introduced a search function for the playlist.
-  - Language Switching: implemented a language-switching feature supporting both Chinese and English.
-  - Bug Fixes: Resolved the issue of not pre-displaying a thumbnail of the video in the player.
-
-- **Additional Features (V4.0):**
-  - Added Day/Night Mode functionality.
-  - Implemented the option to freely select a video folder as the video playback playlist.
-  - Optimized the UI layout for responsiveness.
-  - Bug Fixes: Resolved display errors in Fullscreen mode after video playback completion. Fixed the problem where newly added components continued to display in Fullscreen mode.
+3. **Additional Enhancements:**
+   - Implemented a video screenshot feature.
+   - Language Switching: implemented a language-switching feature supporting both Chinese and English.
+   - Added Day/Night Mode functionality.
+   - Optimized the UI layout for responsiveness.
 
 ## Version History
 
