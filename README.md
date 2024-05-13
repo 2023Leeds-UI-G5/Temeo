@@ -18,19 +18,19 @@ Welcome to the Temeo Video App Prototype! This project is a collaborative effort
 1. Clone the project repository:
 
    ```bash
-   git clone git@github.com:2023Leeds-UI-G5/G5UI-cwk.git
+   git clone git@github.com:2023Leeds-UI-G5/Temeo.git
    ```
 
 2. Navigate to the project directory:
 
    ```bash
-   cd G5UI-cwk
+   cd Temeo
    ```
 
 3. Generate the makefile using qmake (from QT Creator 5.15.2):
 
    ```bash
-   qmake G5UI-cwk.pro
+   qmake Temeo.pro
    ```
 
 4. Build the project using make:
@@ -46,7 +46,7 @@ Welcome to the Temeo Video App Prototype! This project is a collaborative effort
 - If using make, run the following command:
 
   ```bash
-  ./G5UI-cwk
+  ./Temeo
   ```
 
 - If using QT Creator, open the project in QT Creator and click the "Run" button.
