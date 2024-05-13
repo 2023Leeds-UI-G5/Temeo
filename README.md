@@ -1,8 +1,8 @@
 # Temeo Video App Prototype (MVP)
 
-https://img.shields.io/badge/<Language>-<C++>-<blue>
-https://img.shields.io/badge/<IDE>-<QtCreator>-<green>
-https://img.shields.io/badge/<License>-<MIT>-<yellow>
+![](https://img.shields.io/badge/Language-C++-blue)
+![](https://img.shields.io/badge/IDE-QtCreator-green)
+![](https://img.shields.io/badge/License-MIT-yellow)
 
 Welcome to the Temeo Video App Prototype! This project is a collaborative effort, and each team member has made significant contributions to different aspects of the development process.
 
